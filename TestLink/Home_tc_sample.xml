@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Home" >
+<details><![CDATA[ This test is for install check ]]></details> 
+	<testcase internalid="" name="Verify installation">
+	<externalid><![CDATA[]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<steps>
+		<step>
+			<step_number><![CDATA[1]]></step_number>
+			<actions><![CDATA[ action 1  ]]></actions>
+			<expectedresults><![CDATA[]]></expectedresults>
+			<execution_type><![CDATA[1]]></execution_type>
+		</step>
+
+		<step>
+			<step_number><![CDATA[2]]></step_number>
+			<actions><![CDATA[ action 2 ]]></actions>
+			<expectedresults><![CDATA[]]></expectedresults>
+			<execution_type><![CDATA[1]]></execution_type>
+		</step>
+
+		<step>
+			<step_number><![CDATA[3]]></step_number>
+			<actions><![CDATA[ action 3 ]]></actions>
+			<expectedresults><![CDATA[ Expected Result!!! ]]></expectedresults>
+			<execution_type><![CDATA[1]]></execution_type>
+		</step>
+	</steps>
+	</testcase>
+</testsuite>
+
