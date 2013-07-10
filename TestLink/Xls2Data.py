@@ -42,11 +42,11 @@ class XlsData():
     def getRowLength(self):
         cellArrLeng = len(self.cellArr)
         lastCell = self.cellArr[cellArrLeng -1]
-        return lastCell.row_no
+        return lastCell.row_no + 1
     def getColLength(self):
         cellArrLeng = len(self.cellArr)
         lastCell = self.cellArr[cellArrLeng -1]
-        return lastCell.col_no
+        return lastCell.col_no + 1
     def getRow(self, idx):
         start = idx*self.getColLength() 
         end = (idx+1)*self.getColLength() 
@@ -96,11 +96,21 @@ class CellExl():
 class CellParser():
     def __init__(self, xlsData):
         self.xlsData = xlsData
-    def parseCell(self):
+    def parseRows(self):
         colLeng = self.xlsData.getColLength()
+        # Looping in rows
         for i in range(2, colLeng):
+            tc = TestCase()
             row = self.xlsData.getRow(i)
-            print ' row = ', row[S.Col_TC_Desc].cell_value
+            # print ' row = ', row[S.Col_TC_Desc].cell_value
+            title =  row[S.Col_TC_title].cell_value
+            desc =  row[S.Col_TC_Desc].cell_value
+            expt =  row[S.Col_TC_Expt].cell_value
+            tc.name = title
+            self.parseDesc(desc)
+
+    def parseDesc(self, str):
+        pass
 
 
 ## 2
@@ -184,7 +194,7 @@ def readXLS():
     print 'row length = ', xlsData.getRowLength()
     print 'column length = ', xlsData.getColLength()
     cellParser = CellParser(xlsData)
-    cellParser.parseCell()
+    cellParser.parseRows()
 
 def buildTestSuite(xlsData):
     pass
