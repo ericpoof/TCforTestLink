@@ -5,6 +5,7 @@ Created on Jul 9, 2013
 '''
 
 ## Schema mapping xls to testlink xml
+## Another one?
 Row_Top = 0
 Row_Title = 1
 
