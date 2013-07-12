@@ -7,7 +7,8 @@ Created on Jul 1, 2013
 import xlrd
 import re
 from xml.etree.ElementTree import Element
-import Schema as S
+from TC_Pattern import TMO_TV
+from Schema import TMOTV_Schema as S 
 
 # SCHEMA
 # col 0: Test Suit: Top, P[1..9] : testcase, XXX : Testsuite name 
