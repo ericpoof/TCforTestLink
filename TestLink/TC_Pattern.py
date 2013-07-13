@@ -5,8 +5,8 @@ Created on Jul 12, 2013
 '''
 
 class TMO_TV():
-    steps = '(\d.)(.*)'
-    precondition = '(Preconditions:)([a-zA-Z\s\'-]*)(?=steps)'
+    steps = '(\d\.)(.*)'
+    precondition = '(Preconditions:)([a-zA-Z\s\'-\.]*)(?=step)'
     
 
 

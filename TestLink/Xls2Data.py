@@ -108,10 +108,28 @@ class CellParser():
             desc =  row[S.Col_TC_Desc].cell_value
             expt =  row[S.Col_TC_Expt].cell_value
             tc.name = title
-            self.parseDesc(desc)
+            patClass = TMO_TV()
+            self.parseDesc(patClass, desc)
 
-    def parseDesc(self, str):
-        pass
+    def parseDesc(self, patClass, str):
+            # regex compile
+            precondition_pat = re.compile(patClass.precondition, re.I)
+            steps_pat = re.compile(patClass.steps, re.I)
+
+            print 'description=', str
+            print '----------------------------------------------------'
+
+            # regex search
+            precondition = precondition_pat.search(str)
+            if precondition:
+                print 'precondition =', precondition.group(2)
+            else:
+                print 'precondition is None'
+
+            # regex finditer and Match object group(#)
+            for step in steps_pat.finditer(str):
+                print 'step = ', step.group(0)
+            print '----------End---------------------------------------'
 
 
 ## 2
