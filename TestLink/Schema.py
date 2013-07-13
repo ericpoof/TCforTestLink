@@ -9,6 +9,7 @@ Created on Jul 9, 2013
 class TMOTV_Schema():
     Row_Top = 0
     Row_Title = 1
+    Row_Suite = '^P\d$'
     
     Col_TestPlan = 0
     Col_TC_ID = 1

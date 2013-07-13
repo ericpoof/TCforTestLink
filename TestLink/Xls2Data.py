@@ -52,7 +52,13 @@ class XlsData():
         start = idx*self.getColLength() 
         end = (idx+1)*self.getColLength() 
         return self.cellArr[start:end]
-
+    def getRowType(self,row):
+        tp_pattern = re.compile(S.Row_Suite)
+        print 'cell_value =' ,row[S.Col_TestPlan].cell_value
+        if tp_pattern.search(row[S.Col_TestPlan].cell_value) is None:
+            print 'testsuite'
+        else:
+            print 'testcase'
 
 
     def tcType(self):
@@ -97,12 +103,12 @@ class CellExl():
 class CellParser():
     def __init__(self, xlsData):
         self.xlsData = xlsData
-    def parseRows(self):
-        colLeng = self.xlsData.getColLength()
+    def parseRows(self, no_parsing_rows):
         # Looping in rows
-        for i in range(2, colLeng):
+        for i in range(2, no_parsing_rows):
             tc = TestCase()
             row = self.xlsData.getRow(i)
+            print 'row type = ', self.xlsData.getRowType(row)
             # print ' row = ', row[S.Col_TC_Desc].cell_value
             title =  row[S.Col_TC_title].cell_value
             desc =  row[S.Col_TC_Desc].cell_value
@@ -141,15 +147,20 @@ class TestSuite():
 
 class TestCase(): 
     def __init__(self):
+        ## S.Col_TC_title
         self.name = ''
+        ## S.Col_TC_Desc
         self.preconditions = []
         self.steps = []
         
 class Step():
     def __init__(self):
+        ## retrieved from S.Col_TC_Desc
         self.step_number = 1
         self.actions = ''
+        ## S.Col_TC_Expt
         self.expectedresults = ''
+        ## Fixed to manual
         self.execution_type = 1
         
 ## 3
@@ -186,6 +197,7 @@ def tcData():
     pass
 
 def readXLS():
+    ## read a spreadsheet with xlrd module
     workbook = xlrd.open_workbook('TmbieTV_tcs_short.xlsx')
     worksheet = workbook.sheet_by_name('Test Cases')
     num_rows = worksheet.nrows - 1
@@ -199,22 +211,24 @@ def readXLS():
         curr_cell = -1
         while curr_cell < num_cells:
             curr_cell += 1
-            # Cell Types: 0=Empty, 1=Text, 2=Number, 3=Date, 4=Boolean, 5=Error, 6=Blank
+            ## Cell Types: 0=Empty, 1=Text, 2=Number, 3=Date, 4=Boolean, 5=Error, 6=Blank
             cell_type = worksheet.cell_type(curr_row, curr_cell)
             cell_value = worksheet.cell_value(curr_row, curr_cell)
-            #### Class XlsData operation with CellExl
+            ## Class XlsData operation with CellExl
             cell = CellExl(curr_row, curr_cell, cell_value);
             xlsData.append(cell)
-            #### 
+            ## 
             print '    ', cell_type, ':', (curr_row, curr_cell), cell_value
             print get_tcTag(curr_cell, cell_value)
     print '------CLASS----------------------------------'
     print ' #1 step'
-    # xlsData.printXlsData()
+    ## xlsData.printXlsData()
     print 'row length = ', xlsData.getRowLength()
     print 'column length = ', xlsData.getColLength()
     cellParser = CellParser(xlsData)
-    cellParser.parseRows()
+    ## pass no of rows to parse
+    no_rows = xlsData.getColLength()
+    cellParser.parseRows(no_rows)
 
 def buildTestSuite(xlsData):
     pass
