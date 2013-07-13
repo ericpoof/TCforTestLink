@@ -142,6 +142,7 @@ class TestSuite():
 class TestCase(): 
     def __init__(self):
         self.name = ''
+        self.preconditions = []
         self.steps = []
         
 class Step():
