@@ -32,7 +32,7 @@ class REMatcher(object):
 m = REMatcher("tmp");
 
 ## 1
-class XlsData():
+class XlsData(object):
     def __init__(self):
         self.cellArr = []
     def append(self, cell):
@@ -57,8 +57,10 @@ class XlsData():
         print 'cell_value =' ,row[S.Col_TestPlan].cell_value
         if tp_pattern.search(row[S.Col_TestPlan].cell_value) is None:
             print 'testsuite'
+            return S.Row_Type_TS
         else:
             print 'testcase'
+            return S.Row_Type_TC
 
 
     def tcType(self):
@@ -89,7 +91,7 @@ class XlsData():
 
 
 
-class CellExl():
+class CellExl(object):
     def __init__(self, row_no, col_no, cell_value):
         self.row_no = row_no
         self.col_no =  col_no
@@ -100,22 +102,64 @@ class CellExl():
     
 
 ## 1-2
-class CellParser():
+class CellParser(object):
     def __init__(self, xlsData):
         self.xlsData = xlsData
+    
     def parseRows(self, no_parsing_rows):
-        # Looping in rows
-        for i in range(2, no_parsing_rows):
-            tc = TestCase()
+
+        # Top-level testsuite aggregator
+        testsuites = []
+        # dummy object assignment to rule out adding testsuite at first time
+        ts = object() 
+
+        ## Looping in rows
+        for i in range(S.Row_Suite_start, no_parsing_rows):
             row = self.xlsData.getRow(i)
+            row_type = self.xlsData.getRowType(row)
             print 'row type = ', self.xlsData.getRowType(row)
-            # print ' row = ', row[S.Col_TC_Desc].cell_value
-            title =  row[S.Col_TC_title].cell_value
-            desc =  row[S.Col_TC_Desc].cell_value
-            expt =  row[S.Col_TC_Expt].cell_value
-            tc.name = title
+
+            ## To decide if testsuite or individual testcase
+            if row_type is S.Row_Type_TS:  
+                if i != S.Row_Suite_start:
+                    testsuites.append(ts)
+                ts = TestSuite()
+                ## a. Filling out TestSuite()
+                ### name
+                ts.name = row[S.Col_TestSuite].cell_value 
+    
+                ### details
+                ts.details = ''
+    
+                ### testcases
+                ts.testcases = []
+            else:
+                tc = TestCase()
+                self.mapRow2TC(row, tc)
+                ts.testcases.append(tc)
+
+    def mapRow2TC(self, row, tc):
+            tc_title =  row[S.Col_TC_title].cell_value
+            tc_desc =  row[S.Col_TC_Desc].cell_value
+            st_expt =  row[S.Col_TC_Expt].cell_value
+
+            ## b. Filling out TestCase()
+            ### name
+            tc.name = tc_title
+            ### precondition
+
+            ### steps
+
             patClass = TMO_TV()
-            self.parseDesc(patClass, desc)
+            self.parseDesc(patClass, tc_desc)
+
+            ## c. Filling out Step()
+            ### step_number 
+
+            ### actions 
+
+            ### expectedresults 
+    
 
     def parseDesc(self, patClass, str):
             # regex compile
@@ -139,13 +183,13 @@ class CellParser():
 
 
 ## 2
-class TestSuite():
+class TestSuite(object):
     def __init__(self):
         self.name = ''
         self.details = ''
         self.testcases = []
 
-class TestCase(): 
+class TestCase(object): 
     def __init__(self):
         ## S.Col_TC_title
         self.name = ''
@@ -153,7 +197,7 @@ class TestCase():
         self.preconditions = []
         self.steps = []
         
-class Step():
+class Step(object):
     def __init__(self):
         ## retrieved from S.Col_TC_Desc
         self.step_number = 1
@@ -164,7 +208,7 @@ class Step():
         self.execution_type = 1
         
 ## 3
-class XmlTree():
+class XmlTree(object):
     def __init__(self):
         self.testsuite = Element('testsuite')
 
