@@ -150,6 +150,11 @@ class CellParser(object):
             for tc in ts.testcases:
                 print 'testcase name is' , tc.name
                 print 'testcase precon is' , tc.preconditions
+                for step in tc.steps:
+                    print 'step=', step.step_number, ' :' , step.actions
+                    if step.step_number == len(tc.steps):
+                        print 'expected =', step.expectedresults
+
 
     def mapRow2TC(self, row):
             tc = TestCase()
@@ -173,16 +178,15 @@ class CellParser(object):
 
 
             ## c. Filling out Step()
-            i=0
-            for st in steps:
+            for idx,st in enumerate(steps):
                 ### new Step object on each element of a list
                 step = Step()
                 ### step_number 
-                step.step_number = ++i
+                step.step_number = idx + 1
                 ### actions 
                 step.actions = st
                 ### expectedresults 
-                if i == len(steps):
+                if idx == len(steps):
                     step.expectedresults = st_expt
                 ### append Step object to TestCase steps list
                 tc.steps.append(step)
