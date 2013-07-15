@@ -186,7 +186,7 @@ class CellParser(object):
                 ### actions 
                 step.actions = st
                 ### expectedresults 
-                if idx == len(steps):
+                if (idx + 1) == len(steps):
                     step.expectedresults = st_expt
                 ### append Step object to TestCase steps list
                 tc.steps.append(step)
