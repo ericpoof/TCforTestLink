@@ -5,7 +5,15 @@ Created on Jul 9, 2013
 '''
 
 ## Schema mapping xls to testlink xml
-## Another one?
+
+# SCHEMA
+# col 0: Test Suit: Top, P[1..9] : testcase, XXX : Testsuite name 
+# col 1: id: can be skipped at the moment
+# col 2: Title: testacase name
+# col 3: Description: Preconditions, Steps
+# col 4: Expected result
+# col 5: 
+
 class TMOTV_Schema(object):
     Row_Top = 0
     Row_Title = 1

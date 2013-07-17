@@ -24,7 +24,7 @@ def prettify(elem):
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ", encoding = 'utf-8')
 
-def TSElement():
+def tsElement():
     testsuite = Element('testsuite')
     #tree = ET.ElementTree(top)
     
@@ -70,4 +70,4 @@ def TSElement():
     return prettyForm
 
 if __name__ == '__main__':
-    TSElement()
+    tsElement()
