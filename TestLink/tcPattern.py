@@ -15,7 +15,3 @@ class TMO_TV(object):
 
 
 
-
-
-#if __name__ == '__main__':
-#    pass

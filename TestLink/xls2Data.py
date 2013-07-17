@@ -6,9 +6,8 @@ Created on Jul 1, 2013
 
 import xlrd
 import re
-from xml.etree.ElementTree import Element
-from TC_Pattern import TMO_TV
-from Schema import TMOTV_Schema as S 
+from tcPattern import TMO_TV
+from schema import TMOTV_Schema as S 
 from test.test_iterlen import len
 
 # SCHEMA
@@ -248,9 +247,9 @@ class Step(object):
         self.execution_type = 1
         
 ## 3
-class XmlTree(object):
-    def __init__(self):
-        self.testsuite = Element('testsuite')
+# class XmlTree(object):
+#     def __init__(self):
+#         self.testsuite = Element('testsuite')
 
 def get_tcTag(col_no, cell_value):
     if col_no == 0:
