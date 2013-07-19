@@ -59,6 +59,8 @@ def main():
     data2xml = Data2Xml(testsuites[0])
     data2xml.createTSElement()
     data2xml.printPrettyForm()
+    filename = '9testcases.xml'
+    data2xml.saveTestsuiteTag(filename)
 
 
 

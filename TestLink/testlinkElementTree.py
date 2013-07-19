@@ -70,4 +70,4 @@ def tsElement():
     return prettyForm
 
 if __name__ == '__main__':
-    tsElement()
+    pass
