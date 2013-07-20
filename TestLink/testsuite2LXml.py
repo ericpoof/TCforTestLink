@@ -9,7 +9,7 @@ from xml.dom import minidom
 from lxml import etree as ET
 import sys
 
-class Data2LXml(object):
+class Testsuite2LXml(object):
     """
     Data to Xml mapping
     """
@@ -17,6 +17,9 @@ class Data2LXml(object):
         self.testsuite = ts
         self.testsuiteTag = ET.Element('testsuite')
 
+
+    """ @deprecated: not used here
+    """
     def cdataPrefix(self, str):
         """
         Return cdata wrapped string 
@@ -28,6 +31,8 @@ class Data2LXml(object):
     
         return new_str
 
+    """ @deprecated: not used here
+    """
     def prettify(self, elem):
         """
         Return a pretty-printed XML string for the Element. 
@@ -36,7 +41,7 @@ class Data2LXml(object):
         reparsed = minidom.parseString(rough_string)
         return reparsed.toprettyxml(indent="  ", encoding = 'utf-8')
 
-    """ @deprecated: not used here
+    """ print testsuite in serialization using tostring 
     """
     def getPrettyForm(self):
 #         return self.prettify(self.testsuiteTag)
