@@ -21,9 +21,9 @@ class Data2Xml(object):
         Return cdata wrapped string 
         """
         if (type(str) == int):
-            new_str = '![CDATA[%d]]' % (str,) 
+            new_str = '<![CDATA[%d]]>' % (str,) 
         else:
-            new_str = '![CDATA[' + str + ']]' 
+            new_str = "<![CDATA[" + str + "]]>" 
     
         return new_str
 

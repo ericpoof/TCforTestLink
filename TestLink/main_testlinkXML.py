@@ -9,7 +9,8 @@ import re
 from tcPattern import TMO_TV
 from schema import TMOTV_Schema as S 
 from test.test_iterlen import len
-from data2Xml import Data2Xml
+# from data2Xml import Data2Xml
+from data2LXml import Data2LXml
 from xlsData import XlsData
 from cellParser import CellParser
 from testSuite import TestSuite, TestCase, Step
@@ -56,10 +57,13 @@ def main():
     print ' ### 3rd stage '
     print '-------------------------------------'
     
-    data2xml = Data2Xml(testsuites[0])
+#     data2xml = Data2Xml(testsuites[0])
+    """  @ test lxml
+    """ 
+    data2xml = Data2LXml(testsuites[0])
     data2xml.createTSElement()
     data2xml.printPrettyForm()
-    filename = '9testcases.xml'
+    filename = '9testcases1.xml'
     data2xml.saveTestsuiteTag(filename)
 
 
