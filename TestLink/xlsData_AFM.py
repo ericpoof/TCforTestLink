@@ -5,10 +5,10 @@ Created on Jul 17, 2013
 '''
 import re
 import xlrd
-from schema import TMOTV_Schema as S 
 from schema import ATTFamilyMap_Schema as AF
 
 class XlsData(object):
+    Debug = True
     def __init__(self):
         self.cellArr = []
 
@@ -35,14 +35,7 @@ class XlsData(object):
         return self.cellArr[start:end]
 
     def getRowType(self,row):
-        tp_pattern = re.compile(S.Row_Suite)
-        print 'cell_value =' ,row[S.Col_TestPlan].cell_value
-        if tp_pattern.search(row[S.Col_TestPlan].cell_value) is None:
-            print 'testsuite'
-            return S.Row_Type_TS
-        else:
-            print 'testcase'
-            return S.Row_Type_TC
+        return AF.Row_Type_TC
 
     def tcType(self):
         for cell in self.cellArr:
@@ -133,21 +126,20 @@ class XlsData(object):
     def readCsv(self):
         import csv, sys
 
-        filename = "ATTFamilyMap.csv"
+        filename = "Testcases/ATTFamilyMap.csv"
 
         reader = csv.reader(open(filename, "rb"))
         try:
             for idx_row, row in enumerate(reader):
-#                 print 'tittle = ',idx_row,  row[1]
-#                 print  'precon = ', row[2]
-#                 print  'steps = ', row[3]
-#                 print  'expected = ', row[4]
+                if XlsData.Debug:
+                    print 'tittle = ',idx_row,  row[1]
+                    print  'precon = ', row[2]
+                    print  'steps = ', row[3]
+                    print  'expected = ', row[4]
                 for idx_col, col in enumerate(row):
                     cell = CellExl(idx_row, idx_col, col)
                     self.append(cell)
 #                     print 'cell = ', idx_row, idx_col, col
-                    
-
         except csv.Error, e:
             sys.exit('file %s, line %d: %s' % (filename, reader.line_num, e))
 

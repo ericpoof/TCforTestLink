@@ -35,7 +35,7 @@ class XlsData(object):
         return self.cellArr[start:end]
 
     def getRowType(self,row):
-        tp_pattern = re.compile(S.Row_Suite)
+        tp_pattern = re.compile(S.Row_Testcase)
         print 'cell_value =' ,row[S.Col_TestPlan].cell_value
         if tp_pattern.search(row[S.Col_TestPlan].cell_value) is None:
             print 'testsuite'
