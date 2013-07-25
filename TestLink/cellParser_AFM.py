@@ -45,6 +45,7 @@ class CellParser(object):
             print ' beginning of testcases'
             for idx, tc in enumerate(ts.testcases):
                 print 'testcase name is' , idx+1, tc.name
+                print 'testsuite ID is ', tc.externalId
                 print 'testcase precon is' , tc.preconditions
                 for step in tc.steps:
                     print 'step=', step.step_number, ' :' , step.actions
@@ -56,14 +57,17 @@ class CellParser(object):
             tc = TestCase()
             tc_title =  row[AF.Col_TC_Title].cell_value
             tc_desc =  row[AF.Col_TC_Steps].cell_value
-            st_expt =  row[AF.Col_TC_Expt].cell_value
+            tc_expt =  row[AF.Col_TC_Expt].cell_value
+            tc_extId = row[AF.Col_TC_ID].cell_value
 
             patClass = ATT_FamilyMap()
             parsedSteps = self.parseSteps(patClass, tc_desc)
 
             ## b. Filling out TestCase()
-            ### name
+            ### name & Id
             tc.name = tc_title
+            tc.externalId = tc_extId
+
             ### preconditions
 #             tc.preconditions = parsedSteps['precon']
             tc.preconditions = row[AF.Col_TC_Precon].cell_value 
@@ -84,7 +88,7 @@ class CellParser(object):
                 step.actions = st
                 ### expectedresults 
                 if (idx + 1) == len(steps):
-                    step.expectedresults = st_expt
+                    step.expectedresults = tc_expt
                 ### append Step object to TestCase steps list
                 tc.steps.append(step)
             

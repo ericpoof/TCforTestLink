@@ -15,9 +15,12 @@ class TestCase(object):
     def __init__(self):
         ## S.Col_TC_title
         self.name = ''
+        ## external id
+        self.externalId = ''
         ## S.Col_TC_Desc
         self.preconditions = []
         self.steps = []
+
 
 class Step(object):
     def __init__(self):
