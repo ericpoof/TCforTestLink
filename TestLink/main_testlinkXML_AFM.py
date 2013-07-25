@@ -11,8 +11,8 @@ from schema import TMOTV_Schema as S
 # from test.test_iterlen import len
 # from data2Xml import Data2Xml
 from testsuite2LXml import Testsuite2LXml
-from xlsData_AttFamilyMap import XlsData
-from cellParser import CellParser
+from xlsData_AFM import XlsData
+from cellParser_AFM import CellParser
 from testSuite import TestSuite, TestCase, Step
 
 
@@ -41,6 +41,24 @@ def main():
 #     xlsData.readXls()
     xlsData.readCsv()
      
+    ## 2nd stage to parse xlsData and create testsuites
+
+    cellParser = CellParser(xlsData)
+
+    print '-------------------------------------'
+    print '2nd stage'
+    print '-------------------------------------'
+    
+    
+    """  @var no_rows: no of rows to parse
+    """ 
+    if True:
+        no_rows = 13
+        testsuites = cellParser.parseRows(no_rows)
+        print '-------------------------------------'
+        print 'printing testsuites'
+        print '-------------------------------------'
+        cellParser.printTestSuites(testsuites)
 
 
 

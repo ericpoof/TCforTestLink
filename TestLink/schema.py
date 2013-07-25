@@ -18,7 +18,7 @@ class TMOTV_Schema(object):
     Row_Top = 0
     Row_Title = 1
     Row_Suite_start = 2
-    Row_Suite = '^P\d$'
+    Row_Testcase = '^P\d$'
 
     Row_Type_TC = 10
     Row_Type_TS = 11
@@ -35,7 +35,16 @@ class ATTFamilyMap_Schema(object):
 #     Sheet = 'Sheet1'
     WorkBook = 'TmbieTV_tcs_short.xlsx'
     Sheet = 'Test Cases'
+
     Row_Top = 0
+    Row_Suite_start = 1
+
+    Row_Type_TC = 10
+    Row_Type_TS = 11
+
+    Col_TestSuite = 'ATT Family Map'
+
+    Col_TC_ID = 0
     Col_TC_Title = 1
     Col_TC_Precon = 2
     Col_TC_Steps = 3

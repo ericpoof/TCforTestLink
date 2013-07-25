@@ -70,7 +70,7 @@ class CellParser(object):
             st_expt =  row[S.Col_TC_Expt].cell_value
 
             patClass = TMO_TV()
-            parsedDesc = self.parseDesc(patClass, tc_desc)
+            parsedDesc = self.parseSteps(patClass, tc_desc)
 
             ## b. Filling out TestCase()
             ### name
@@ -102,7 +102,7 @@ class CellParser(object):
             return tc
                 
 
-    def parseDesc(self, patClass, str):
+    def parseSteps(self, patClass, str):
             # regex compile
             precondition_pat = re.compile(patClass.precondition, re.I)
             steps_pat = re.compile(patClass.steps, re.I)

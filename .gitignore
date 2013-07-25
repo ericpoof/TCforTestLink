@@ -1,5 +1,7 @@
-
+.DS_Store
 *.pyc
+*.swp
+Testcases/
 9testcases.xml
 9testcases1.xml
 cdataTest.py

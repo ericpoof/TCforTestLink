@@ -11,11 +11,13 @@ Created on Jul 12, 2013
 class TMO_TV(object):
     steps = '(\d\.)(.*)'
     precondition = '(Preconditions:)([a-zA-Z\s\'-\.]*)(?=step)'
+    ### group(0): whole match, group(1): first group, group(2): 2nd group  
     sel_subgroup = 2
     
 
 class ATT_FamilyMap(object):
-    pass
+    steps = '(\d\.)(.*)'
+    sel_subgroup = 2
     
 
 
