@@ -8,7 +8,7 @@ import xlrd
 import re
 from tcPattern import TMO_TV
 from schema import TMOTV_Schema as S 
-from test.test_iterlen import len
+# from test.test_iterlen import len
 # from data2Xml import Data2Xml
 from testsuite2LXml import Testsuite2LXml
 from xlsData import XlsData
@@ -35,16 +35,18 @@ from testSuite import TestSuite, TestCase, Step
 
 
 def main():
+
+    ## 1st stage to create cell data from a xls spreadsheet
     xlsData = XlsData()
     xlsData.readXls()
     
      
-    ## 2nd stage after getting xlsData
+    ## 2nd stage to parse xlsData and create testsuites
 
     cellParser = CellParser(xlsData)
 
-    ## pass no of rows to parse
-
+    """  @var no_rows: no of rows to parse
+    """ 
     no_rows = xlsData.getColLength()
     testsuites = cellParser.parseRows(no_rows)
     print '-------------------------------------'
@@ -52,12 +54,11 @@ def main():
     print '-------------------------------------'
     cellParser.printTestSuites(testsuites)
 
-    ## 3rd stage after getting testsuites
+    ## 3rd stage to create xml compatible with TestLink
     print '-------------------------------------'
     print ' ### 3rd stage '
     print '-------------------------------------'
     
-#     ts2xml = Data2Xml(testsuites[0])
     """  @ test lxml
     """ 
     ts2xml = Testsuite2LXml(testsuites[0])

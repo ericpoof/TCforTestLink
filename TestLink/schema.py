@@ -29,3 +29,14 @@ class TMOTV_Schema(object):
     Col_TC_title = 2
     Col_TC_Desc = 3
     Col_TC_Expt = 4
+
+class ATTFamilyMap_Schema(object):
+#     WorkBook = 'ATTFamilyMap.xlsx'
+#     Sheet = 'Sheet1'
+    WorkBook = 'TmbieTV_tcs_short.xlsx'
+    Sheet = 'Test Cases'
+    Row_Top = 0
+    Col_TC_Title = 1
+    Col_TC_Precon = 2
+    Col_TC_Steps = 3
+    Col_TC_Expt = 4
