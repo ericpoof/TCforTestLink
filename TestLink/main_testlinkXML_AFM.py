@@ -68,11 +68,11 @@ def main():
     
     """  @ test lxml
     """ 
-    ts2xml = Testsuite2LXml(testsuites[0])
-    ts2xml.createTSElement()
-    ts2xml.printPrettyForm()
-    filename = 'Attfamilymapsample2.xml'
-    ts2xml.saveTestsuiteTag(filename)
+#     ts2xml = Testsuite2LXml(testsuites[0])
+#     ts2xml.createTSElement()
+#     ts2xml.printPrettyForm()
+#     filename = 'Attfamilymapsample2.xml'
+#     ts2xml.saveTestsuiteTag(filename)
 
 
 if __name__ == '__main__':

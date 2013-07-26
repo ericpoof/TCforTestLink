@@ -70,7 +70,10 @@ class CellParser(object):
 
             ### preconditions
 #             tc.preconditions = parsedSteps['precon']
-            tc.preconditions = row[AF.Col_TC_Precon].cell_value 
+            precon_noline = row[AF.Col_TC_Precon].cell_value 
+            precon_newline = self.addLinetoNumList(patClass, precon_noline)
+            print precon_newline
+            tc.preconditions = precon_newline
             print ' preconditions' , tc.preconditions
 
             ### steps
@@ -96,6 +99,22 @@ class CellParser(object):
             return tc
                 
 
+    def addLinetoNumList(self, patClass, str):
+            steps_pat = re.compile(patClass.steps, re.I)
+            m = steps_pat.match(str)
+
+            newLineAdded = ''
+            # regex finditer and Match object group(#)
+            if m:
+                for step in steps_pat.finditer(str):
+                    newLineAdded = newLineAdded + step.group(0) + '\n' 
+                    print 'newLineAdded = ', newLineAdded
+            else:
+                newLineAdded = str
+                print 'no numbered parts'
+            return newLineAdded
+        
+        
     def parseSteps(self, patClass, str):
             # regex compile
             steps_pat = re.compile(patClass.steps, re.I)

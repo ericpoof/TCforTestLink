@@ -331,7 +331,8 @@ N/A/N/A-1875]]></expectedresults>
   </testcase>
   <testcase name="  [C461096] Verify the UI of the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.Launch the application.]]></preconditions>
+2.Launch the application.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -400,7 +401,8 @@ N/A/N/A-1875]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C461100] Clear cache and login the application." internalid="">
-    <preconditions><![CDATA[1.Application should be installed properly.]]></preconditions>
+    <preconditions><![CDATA[1.Application should be installed properly.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -900,7 +902,8 @@ The modal should have an "Ok" button; when the user clicks it, we should then re
     </steps>
   </testcase>
   <testcase name="  [C329115] Submit and check the code sent via sms." internalid="">
-    <preconditions><![CDATA[1. Application should be installed properly.]]></preconditions>
+    <preconditions><![CDATA[1. Application should be installed properly.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1129,7 +1132,8 @@ Take note of your password preference ]]></preconditions>
     </steps>
   </testcase>
   <testcase name="  [C387160] Auto locate is turned off when app is upgarded." internalid="">
-    <preconditions><![CDATA[1.Market version of app should be installed.]]></preconditions>
+    <preconditions><![CDATA[1.Market version of app should be installed.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1282,7 +1286,8 @@ N/A/N/A-2579]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C268819] Press submit and check on landscape mode." internalid="">
-    <preconditions><![CDATA[1.Phone no and password field should be filled.]]></preconditions>
+    <preconditions><![CDATA[1.Phone no and password field should be filled.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1298,7 +1303,8 @@ N/A/N/A-2579]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C389024] Launching app second time on wards, lands on log in screen." internalid="">
-    <preconditions><![CDATA[1.User has started the app for the first time.]]></preconditions>
+    <preconditions><![CDATA[1.User has started the app for the first time.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1456,7 +1462,8 @@ On pressing ok button,User returned to sign in screen.]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C325093] Click Sign up on the screen." internalid="">
-    <preconditions><![CDATA[1. Application should be installed properly.]]></preconditions>
+    <preconditions><![CDATA[1. Application should be installed properly.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1538,7 +1545,8 @@ On pressing ok button,User returned to sign in screen.]]></expectedresults>
   <testcase name="  [C401790] Clicking Map button, user is taken to Map screen." internalid="">
     <preconditions><![CDATA[1.Application should be loaded properly.
 2.User should be logged in with correct/valid credentials.
-3.User should come on map screen after log in.]]></preconditions>
+3.User should come on map screen after log in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1694,7 +1702,8 @@ On pressing ok button,User returned to sign in screen.]]></expectedresults>
   </testcase>
   <testcase name="  [C254978] Verify the UI of Map Screen while it is locating kid(s)." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with correct/valid credentials.]]></preconditions>
+2.User should be logged in with correct/valid credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1905,7 +1914,8 @@ N/A/N/A-8526]]></expectedresults>
   </testcase>
   <testcase name="  [C286418] kids are taking appropriate time in locating." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with correct/valid credentials.]]></preconditions>
+2.User should be logged in with correct/valid credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1928,7 +1938,8 @@ N/A/N/A-8526]]></expectedresults>
   <testcase name="  [C286417] Locating doesn't get effected as user switches to other screen and comes back." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any Kid should be locating.]]></preconditions>
+3.Any Kid should be locating.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -1951,7 +1962,8 @@ N/A/N/A-8526]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C325090] Map screen looks stable while locating kid(s)." internalid="">
-    <preconditions><![CDATA[1. User should be logged in to the app.]]></preconditions>
+    <preconditions><![CDATA[1. User should be logged in to the app.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2002,7 +2014,8 @@ N/A/N/A-8511]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C387159] As landing on map screen, places' icons are visible." internalid="">
-    <preconditions><![CDATA[1.Some places should be added already.]]></preconditions>
+    <preconditions><![CDATA[1.Some places should be added already.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2060,7 +2073,8 @@ N/A/N/A-8511]]></expectedresults>
   </testcase>
   <testcase name="  [C401803] Launching app freshly, First kid starts locating." internalid="">
     <preconditions><![CDATA[1.App should be freshly launched.
-2.User should be logged in.]]></preconditions>
+2.User should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2139,7 +2153,8 @@ N/A/N/A-8511]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C401808] Kid info bar showing &quot;Locating [Name]&quot; if kid is not located earlier." internalid="">
-    <preconditions><![CDATA[1.Kid should not be located earlier.]]></preconditions>
+    <preconditions><![CDATA[1.Kid should not be located earlier.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2155,7 +2170,8 @@ N/A/N/A-8511]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C401809] Kid info bar showing &quot;Address&quot; if kid has been located earlier." internalid="">
-    <preconditions><![CDATA[1.Kid should be located earlier.]]></preconditions>
+    <preconditions><![CDATA[1.Kid should be located earlier.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2226,7 +2242,8 @@ N/A/N/A-8511]]></expectedresults>
   <testcase name="  [C255008] Verify the layout of the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any Kid should be located.]]></preconditions>
+3.Any Kid should be located.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2828,7 +2845,8 @@ N/A/N/A-2053]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C387162] Log out and then log in after selecting any kid on drop down." internalid="">
-    <preconditions><![CDATA[1.There should be 4 to 5 kids on the map screen.]]></preconditions>
+    <preconditions><![CDATA[1.There should be 4 to 5 kids on the map screen.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -2916,7 +2934,6 @@ N/A/N/A-1961]]></expectedresults>
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
 3.Locating of any kid should be failed.
-
 ]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
@@ -3163,7 +3180,8 @@ N/A/N/A-572
   <testcase name="  [C286425] Verfiy the Toast message for Locate failed." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in.
-3.Locate of a kid should be failed.]]></preconditions>
+3.Locate of a kid should be failed.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -3179,7 +3197,8 @@ N/A/N/A-572
     </steps>
   </testcase>
   <testcase name="  [C292809] Click Relocate button." internalid="">
-    <preconditions><![CDATA[1.A locate should be failed.]]></preconditions>
+    <preconditions><![CDATA[1.A locate should be failed.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -3422,7 +3441,8 @@ N/A/N/A-2585]]></expectedresults>
   </testcase>
   <testcase name="  [C269034] Change any map layer then zoom in and vice versa." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -3449,7 +3469,8 @@ N/A/N/A-2585]]></expectedresults>
   </testcase>
   <testcase name="  [C280445] Deselect both the options on prompt and verify the map screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -3548,7 +3569,8 @@ N/A/N/A-2585]]></expectedresults>
   <testcase name="  [C255017] Verify UI of the History screen" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any Kid should be located to check the updated history.]]></preconditions>
+3.Any Kid should be located to check the updated history.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -3768,7 +3790,8 @@ Then location‘s address and accuracy of the location below address should appe
   </testcase>
   <testcase name="  [C269033] Verify if history of one kid is not interfearing with the history of other kid." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with correct/valid credentials.]]></preconditions>
+2.User should be logged in with correct/valid credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -3785,7 +3808,8 @@ Then location‘s address and accuracy of the location below address should appe
   </testcase>
   <testcase name="  [C269037] Verify the history screen for a kid just after deletion of it." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with correct/valid credentials.]]></preconditions>
+2.User should be logged in with correct/valid credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -4133,7 +4157,8 @@ Then location‘s address and accuracy of the location below address should appe
     </steps>
   </testcase>
   <testcase name="  [C387152] Side bar opening and closing properly on history-detail screen." internalid="">
-    <preconditions><![CDATA[1.Previous locates history should be available.]]></preconditions>
+    <preconditions><![CDATA[1.Previous locates history should be available.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -4231,7 +4256,8 @@ Then location‘s address and accuracy of the location below address should appe
     </steps>
   </testcase>
   <testcase name="  [C389019] Map loads easily for a previous locate when any kid is locating." internalid="">
-    <preconditions><![CDATA[1.Some previous locates' history should be available.]]></preconditions>
+    <preconditions><![CDATA[1.Some previous locates' history should be available.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -4321,7 +4347,8 @@ N/A/N/A-8489]]></expectedresults>
   <testcase name="  [C255213] Verify the layout of the screen without any schedule" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any schedule should not be added.]]></preconditions>
+3.Any schedule should not be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -4509,7 +4536,8 @@ N/A/N/A-614]]></expectedresults>
   <testcase name="  [C255218] Verify the UI of the screen" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any schedule should not be added.]]></preconditions>
+3.Any schedule should not be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -4772,7 +4800,8 @@ N/A/N/A-642]]></expectedresults>
   <testcase name="  [C255229] Verify the status bar of the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any schedule for any kid should be added.]]></preconditions>
+3.Any schedule for any kid should be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -6048,7 +6077,8 @@ N/A/N/A-8524]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C333233] Create any schedule and try to update it." internalid="">
-    <preconditions><![CDATA[1. A place should be added already.]]></preconditions>
+    <preconditions><![CDATA[1. A place should be added already.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -6105,7 +6135,8 @@ N/A/N/A-1788]]></expectedresults>
   <testcase name="  [C255373] Check for the verification email sent mentioned into &quot;email address to cc&quot; on the schedule screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Some Schedule should be set to fire.]]></preconditions>
+3.Some Schedule should be set to fire.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -6417,7 +6448,8 @@ N/A/N/A-1788]]></expectedresults>
   <testcase name="  [C255041] Verify the UI of the screen" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.No Place should be added before.]]></preconditions>
+3.No Place should be added before.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -7102,7 +7134,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   </testcase>
   <testcase name="  [C286427] Verify the disambiguity of the address prompt." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in.]]></preconditions>
+2.User should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -7178,7 +7211,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   <testcase name="  [C255193] Verify the layout of the “Name this place” overlay" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Some Places should be added already.]]></preconditions>
+3.Some Places should be added already.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -7756,7 +7790,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   </testcase>
   <testcase name="  [C269029] Click rename on landscape mode, verify on portrait mode." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with correct/valid credentials.]]></preconditions>
+2.User should be logged in with correct/valid credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -7875,7 +7910,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   <testcase name="  [C255206] Verify the layout of the delete overlay" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Some Places should be added already.]]></preconditions>
+3.Some Places should be added already.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -8285,7 +8321,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   <testcase name="  [C255208] Click any button on the screen during toast message appearance." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Some Places should be added already.]]></preconditions>
+3.Some Places should be added already.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -8788,7 +8825,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   </testcase>
   <testcase name="  [C265626] Click &quot;My Settings&quot; on Side menu." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -8820,7 +8858,8 @@ Enter a duplicate name (one already assigned to a place you've created).  ]]></a
   </testcase>
   <testcase name="  [C265627] Verify UI of My Settings screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -9698,7 +9737,8 @@ N/A/N/A-8514]]></expectedresults>
     </steps>
   </testcase>
   <testcase name="  [C446863] Kid starts locating  if it is not located earlier on changing name and setting to top alphabetically." internalid="">
-    <preconditions><![CDATA[1.Kid should be as fresh as it is not been located earlier.]]></preconditions>
+    <preconditions><![CDATA[1.Kid should be as fresh as it is not been located earlier.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -9725,7 +9765,8 @@ N/A/N/A-8514]]></expectedresults>
   </testcase>
   <testcase name="  [C265646] Tap &quot;Change Photo&quot;" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10212,7 +10253,8 @@ N/A/N/A-8514]]></expectedresults>
   <testcase name="  [C265681] Tap &quot;Remove&quot;." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with valid/correct credentials.
-3.Any kid should be added.]]></preconditions>
+3.Any kid should be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10260,7 +10302,8 @@ N/A/N/A-8514]]></expectedresults>
   <testcase name="  [C265682] Tap &quot;Cancel&quot;." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with valid/correct credentials.
-3.Any kid should be added.]]></preconditions>
+3.Any kid should be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10313,7 +10356,8 @@ N/A/N/A-8514]]></expectedresults>
   <testcase name="  [C265684] Click &quot;Remove&quot; on remove popup." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with valid/correct credentials.
-3.Any kid should be added.]]></preconditions>
+3.Any kid should be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10371,7 +10415,8 @@ N/A/N/A-8514]]></expectedresults>
   <testcase name="  [C270161] Remove a kid and verify the sign of reappearance on the map screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with valid/correct credentials.
-3.Any kid should be added.]]></preconditions>
+3.Any kid should be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10434,7 +10479,8 @@ N/A/N/A-8514]]></expectedresults>
   <testcase name="  [C272287] Check the overlay on Landscape mode." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with valid/correct credentials.
-3.Any kid should be added.]]></preconditions>
+3.Any kid should be added.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10506,7 +10552,8 @@ N/A/N/A-8514]]></expectedresults>
   </testcase>
   <testcase name="  [C265666] Tap &quot;Add Family Member&quot;" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10543,7 +10590,8 @@ N/A/N/A-8514]]></expectedresults>
   </testcase>
   <testcase name="  [C265667] Verify UI of the &quot;Add family Member&quot; Screen" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10587,7 +10635,8 @@ N/A/N/A-9113#comment-263807
   </testcase>
   <testcase name="  [C265668] Select a new member." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10630,7 +10679,8 @@ N/A/N/A-9113#comment-263807
   </testcase>
   <testcase name="  [C265669] Attempt to add family member with 5 members already added to account." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10673,7 +10723,8 @@ N/A/N/A-9113#comment-263807
   <testcase name="  [C265670] Attempt to add family member with no contacts present to add to account" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with valid/correct credentials.
-3.No member should be there in the phone address book.]]></preconditions>
+3.No member should be there in the phone address book.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10715,7 +10766,8 @@ N/A/N/A-9113#comment-263807
   </testcase>
   <testcase name="  [C269026] Add a kid, click side menu and then click map button on side menu." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -10767,7 +10819,8 @@ N/A/N/A-9113#comment-263807
   </testcase>
   <testcase name="  [C269035] Verify the text on the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11073,7 +11126,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C265676] Tap &quot;Time Zone&quot; ." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11105,7 +11159,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C265677] Verify UI of Time Zone list screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11145,7 +11200,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C265678] Change Time Zone." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11187,7 +11243,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C272207] Verify the time zone prompt on landscape mode." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11446,7 +11503,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C272289] Verify change password overlay on landscape mode." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11766,7 +11824,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C272290] Verify prompt me for my password overlay on landscape mode." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11869,7 +11928,8 @@ N/A/N/A-8546]]></expectedresults>
   </testcase>
   <testcase name="  [C266378] Verify the UI of the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should have launched the application one time.]]></preconditions>
+2.User should have launched the application one time.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11944,7 +12004,8 @@ N/A/N/A-8454]]></expectedresults>
   <testcase name="  [C255393] Locate kids" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Kids should be available on the map screen.]]></preconditions>
+3.Kids should be available on the map screen.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -11973,7 +12034,8 @@ N/A/N/A-8454]]></expectedresults>
   <testcase name="  [C255394] Try to relocate a located child." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Any Kid should be located earlier.]]></preconditions>
+3.Any Kid should be located earlier.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12006,7 +12068,8 @@ N/A/N/A-8454]]></expectedresults>
   <testcase name="  [C255398] Verify the loading of history screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.User should be logged in with correct/valid credentials.
-3.Some kids should be available.]]></preconditions>
+3.Some kids should be available.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12035,7 +12098,8 @@ N/A/N/A-8454]]></expectedresults>
   <testcase name="  [C255406] Verify the history of the locating kid." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
 2.Login with the valid credentials.
-3.A kid should be locating.]]></preconditions>
+3.A kid should be locating.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12188,7 +12252,8 @@ N/A/N/A-8454]]></expectedresults>
   </testcase>
   <testcase name="  [C286420] Verify the halo of the background located kid." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in.]]></preconditions>
+2.User should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12491,7 +12556,8 @@ N/A/N/A-8401]]></expectedresults>
   </testcase>
   <testcase name="  [C265594] Verify UI of the prompt." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User should be logged in with valid/correct credentials.]]></preconditions>
+2.User should be logged in with valid/correct credentials.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12686,7 +12752,8 @@ N/A/N/A-8401]]></expectedresults>
   </testcase>
   <testcase name="  [C286432] Verify the UI of the sparkle provisioning screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12735,7 +12802,8 @@ N/A/N/A-1832]]></expectedresults>
   </testcase>
   <testcase name="  [C286434] Verify the images showing steps on the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12752,7 +12820,8 @@ N/A/N/A-1832]]></expectedresults>
   </testcase>
   <testcase name="  [C286435] Verify the phone no mention on the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12828,7 +12897,8 @@ N/A/N/A-1832]]></expectedresults>
   </testcase>
   <testcase name="  [C286439] Verify the images of the iphone step by step." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12846,7 +12916,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286440] Verify the buttons &quot;No&quot; and &quot;Yes&quot; at the bottom of the screen." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12863,7 +12934,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286441] Click &quot;No&quot;." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12881,7 +12953,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286442] Click &quot;OK&quot; on the appeared prompt." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12898,7 +12971,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286443] Click &quot;Install Later&quot; on the prompt." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12915,7 +12989,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286444] Click &quot;Yes&quot;." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12933,7 +13008,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286445] Click &quot;Ok&quot; on the prompt &quot;You can now locate their iPhone&quot;." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12950,7 +13026,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286446] Click &quot;Try again&quot; on the prompt &quot;You can now locate their iPhone&quot;." internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
@@ -12967,7 +13044,8 @@ follow the bug : N/A/N/A-2069 for proper specs.]]></expectedresults>
   </testcase>
   <testcase name="  [C286447] Verify the sparkle provisioning screen on the landscape mode" internalid="">
     <preconditions><![CDATA[1.Application should be installed properly.
-2.User Should be logged in.]]></preconditions>
+2.User Should be logged in.
+]]></preconditions>
     <externalid><![CDATA[]]></externalid>
     <version><![CDATA[]]></version>
     <summary><![CDATA[]]></summary>
