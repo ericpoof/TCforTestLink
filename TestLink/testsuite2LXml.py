@@ -7,6 +7,7 @@ Created on Jul 16, 2013
 # from xml.etree.ElementTree import Element, SubElement, Comment
 from xml.dom import minidom
 from lxml import etree as ET
+from xml.sax.saxutils import escape
 import sys
 
 class Testsuite2LXml(object):
@@ -90,7 +91,7 @@ class Testsuite2LXml(object):
             
             ## additional tags
             externalidTag = ET.SubElement(testcaseTag,'externalid')
-            externalidTag.text = ET.CDATA(str(idx0+1000))
+            externalidTag.text = ET.CDATA(tc.externalId)
             versionTag = ET.SubElement(testcaseTag,'version')
             versionTag.text = ET.CDATA('')
             summaryTag = ET.SubElement(testcaseTag,'summary')
@@ -120,6 +121,8 @@ class Testsuite2LXml(object):
                 if stepsLen == (idx+1):
                     expectedresultsTag = ET.SubElement(stepTag, 'expectedresults')
                     expectedresultsTag.text = ET.CDATA(st.expectedresults)
+                    print '-----------Expected ', expectedresultsTag.text
+#                     expectedresultsTag.text = ''
                 execution_typeTag = ET.SubElement(stepTag, 'execution_type')
                 execution_typeTag.text = ET.CDATA(str(1))
                 

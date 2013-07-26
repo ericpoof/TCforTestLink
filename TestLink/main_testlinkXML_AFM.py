@@ -53,14 +53,31 @@ def main():
     """  @var no_rows: no of rows to parse
     """ 
     if True:
-        no_rows = 13
+        no_rows = xlsData.getRowLength() 
+        print 'number of rows is ', no_rows
         testsuites = cellParser.parseRows(no_rows)
         print '-------------------------------------'
         print 'printing testsuites'
         print '-------------------------------------'
         cellParser.printTestSuites(testsuites)
 
+    ## 3rd stage to create xml compatible with TestLink
+    print '-------------------------------------'
+    print ' ### 3rd stage '
+    print '-------------------------------------'
+    
+    """  @ test lxml
+    """ 
+    ts2xml = Testsuite2LXml(testsuites[0])
+    ts2xml.createTSElement()
+    ts2xml.printPrettyForm()
+    filename = 'Attfamilymapsample2.xml'
+    ts2xml.saveTestsuiteTag(filename)
 
 
 if __name__ == '__main__':
     main()
+
+
+
+

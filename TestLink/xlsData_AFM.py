@@ -126,7 +126,7 @@ class XlsData(object):
     def readCsv(self):
         import csv, sys
 
-        filename = "Testcases/ATTFamilyMap.csv"
+        filename = "Testcases/ATTFamilyMap.csv.bk"
 
         reader = csv.reader(open(filename, "rb"))
         try:
