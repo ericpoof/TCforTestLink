@@ -7,7 +7,6 @@ Created on Jul 16, 2013
 # from xml.etree.ElementTree import Element, SubElement, Comment
 from xml.dom import minidom
 from lxml import etree as ET
-from xml.sax.saxutils import escape
 import sys
 
 class Testsuite2LXml(object):

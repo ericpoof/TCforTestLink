@@ -30,7 +30,7 @@ from testSuite import TestSuite, TestCase, Step
 ## TestSuite()/TestCase()/Steps()        
 
 ## 3
-## Data2Xml(testsuite)
+## Testsuite2LXml(testsuite)
 
 
 
@@ -57,7 +57,7 @@ def main():
     ## 3rd stage to create xml compatible with TestLink
     print '-------------------------------------'
     print ' ### 3rd stage '
-    print '-------------------------------------'
+    print '------------------------------------'
     
     """  @ test lxml
     """ 

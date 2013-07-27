@@ -17,20 +17,17 @@ from testSuite import TestSuite, TestCase, Step
 
 
 # Conversion Flow
-## 1
-## 
-## XlsData()
+## 1 XlsData()
+### xlrd
+### CellExl()
 
-## CellExl()
+## 2 CellParser()
+### re
+### TestSuite()/TestCase()/Steps()        
 
-## 1-2
-## CellParser()
-
-## 2
-## TestSuite()/TestCase()/Steps()        
-
-## 3
-## Data2Xml(testsuite)
+## 3 Testsuite2LXml(testsuite)
+### lxml
+### testsuiteTag = ET.Element('testsuite')
 
 
 
