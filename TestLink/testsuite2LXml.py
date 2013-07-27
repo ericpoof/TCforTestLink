@@ -45,7 +45,7 @@ class Testsuite2LXml(object):
     """
     def getPrettyForm(self):
 #         return self.prettify(self.testsuiteTag)
-        return ET.tostring(self.testsuiteTag, xml_declaration=True, pretty_print=True)
+        return ET.tostring(self.testsuiteTag, encoding='UTF-8', xml_declaration=True, pretty_print=True)
 
     def printPrettyForm(self):
         print self.getPrettyForm()
@@ -54,6 +54,14 @@ class Testsuite2LXml(object):
         prettyForm = self.getPrettyForm()
         with open(filename, 'w') as the_file:
             the_file.write(prettyForm)
+
+    def valid_XML_char_ordinal(self, i):
+        return ( # conditions ordered by presumed frequency
+            0x20 <= i <= 0xD7FF 
+            or i in (0x9, 0xA, 0xD)
+            or 0xE000 <= i <= 0xFFFD
+            or 0x10000 <= i <= 0x10FFFF
+            )
 
     def createTSElement(self):
         ts = self.testsuite
@@ -79,18 +87,17 @@ class Testsuite2LXml(object):
             """ ...@var testcase.name: 
             """
             tcname = '  ' + tc.name
-            testcaseTag.set('name',tcname)
+            testcaseTag.set('name', unicode(tcname,'utf-8'))
             testcaseTag.set('internalid','')
     
             """ ...@var testcase.preconditions:
             """
             preconditionsTag = ET.SubElement(testcaseTag,'preconditions')
-#             preconditionsTag.text = ET.CDATA(tc.preconditions)
             preconditionsTag.text = ET.CDATA(tc.preconditions)
             
             ## additional tags
             externalidTag = ET.SubElement(testcaseTag,'externalid')
-            externalidTag.text = ET.CDATA(str(idx0+1000))
+            externalidTag.text = ET.CDATA(tc.externalId)
             versionTag = ET.SubElement(testcaseTag,'version')
             versionTag.text = ET.CDATA('')
             summaryTag = ET.SubElement(testcaseTag,'summary')
@@ -114,12 +121,13 @@ class Testsuite2LXml(object):
                 """
                 actionsTag = ET.SubElement(stepTag, 'actions')
                 print 'st.actions = ', st.actions
-                actionsTag.text = ET.CDATA(st.actions)
+                actionsTag.text = ET.CDATA(unicode(st.actions, 'utf-8'))
                 """ ......@var step.expectedresults: 
                 """
                 if stepsLen == (idx+1):
                     expectedresultsTag = ET.SubElement(stepTag, 'expectedresults')
-                    expectedresultsTag.text = ET.CDATA(st.expectedresults)
+                    expectedresultsTag.text = ET.CDATA(unicode(st.expectedresults, 'utf-8'))
+                    print '-----------Expected ', expectedresultsTag.text
                 execution_typeTag = ET.SubElement(stepTag, 'execution_type')
                 execution_typeTag.text = ET.CDATA(str(1))
                 
