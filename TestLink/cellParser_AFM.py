@@ -70,10 +70,7 @@ class CellParser(object):
 
             ### preconditions
 #             tc.preconditions = parsedSteps['precon']
-            precon_noline = row[AF.Col_TC_Precon].cell_value 
-            precon_newline = self.addLinetoNumList(patClass, precon_noline)
-            print precon_newline
-            tc.preconditions = precon_newline
+            tc.preconditions = row[AF.Col_TC_Precon].cell_value
             print ' preconditions' , tc.preconditions
 
             ### steps
@@ -91,7 +88,10 @@ class CellParser(object):
                 step.actions = st
                 ### expectedresults 
                 if (idx + 1) == len(steps):
-                    step.expectedresults = tc_expt
+                    expt_newline = self.addLinetoNumList(patClass, tc_expt)
+                    print expt_newline
+                    step.expectedresults = expt_newline
+#                     step.expectedresults = tc_expt
                 ### append Step object to TestCase steps list
                 tc.steps.append(step)
             
@@ -107,7 +107,8 @@ class CellParser(object):
             # regex finditer and Match object group(#)
             if m:
                 for step in steps_pat.finditer(str):
-                    newLineAdded = newLineAdded + step.group(0) + '\n' 
+                    newLineAdded = newLineAdded + step.group(0) + '<br />' 
+                    print 'group(0) ', step.group(0)
                     print 'newLineAdded = ', newLineAdded
             else:
                 newLineAdded = str
