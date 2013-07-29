@@ -63,6 +63,17 @@ class Testsuite2LXml(object):
             or 0x10000 <= i <= 0x10FFFF
             )
 
+    def getUnicode(self, text):
+        """
+        return unicode if text is str, else return text as is
+        @param text: 
+        @type text: str or unicode
+        """
+        try:
+            text = unicode(text, 'utf-8')
+        except TypeError:
+            return text
+        
     def createTSElement(self):
         ts = self.testsuite
         
@@ -87,7 +98,8 @@ class Testsuite2LXml(object):
             """ ...@var testcase.name: 
             """
             tcname = '  ' + tc.name
-            testcaseTag.set('name', unicode(tcname,'utf-8'))
+            utcname = self.getUnicode(tcname)
+            testcaseTag.set('name', utcname)
             testcaseTag.set('internalid','')
     
             """ ...@var testcase.preconditions:
@@ -121,12 +133,12 @@ class Testsuite2LXml(object):
                 """
                 actionsTag = ET.SubElement(stepTag, 'actions')
                 print 'st.actions = ', st.actions
-                actionsTag.text = ET.CDATA(unicode(st.actions, 'utf-8'))
+                actionsTag.text = ET.CDATA(self.getUnicode(st.actions))
                 """ ......@var step.expectedresults: 
                 """
                 if stepsLen == (idx+1):
                     expectedresultsTag = ET.SubElement(stepTag, 'expectedresults')
-                    expectedresultsTag.text = ET.CDATA(unicode(st.expectedresults, 'utf-8'))
+                    expectedresultsTag.text = ET.CDATA(self.getUnicode(st.expectedresults))
                     print '-----------Expected ', expectedresultsTag.text
                 execution_typeTag = ET.SubElement(stepTag, 'execution_type')
                 execution_typeTag.text = ET.CDATA(str(1))
