@@ -7,9 +7,6 @@ Created on Jul 1, 2013
 import xlrd
 import re
 from tcPattern import TMO_TV
-from schema import TMOTV_Schema as S 
-# from test.test_iterlen import len
-# from data2Xml import Data2Xml
 from testsuite2LXml import Testsuite2LXml
 from xlsData import XlsData
 from cellParser import CellParser
@@ -17,24 +14,22 @@ from testSuite import TestSuite, TestCase, Step
 
 
 # Conversion Flow
-## 1
-## 
-## XlsData()
+## 1 XlsData()
+### xlrd
+### CellExl()
 
-## CellExl()
+## 2 CellParser()
+### re
+### TestSuite()/TestCase()/Steps()        
 
-## 1-2
-## CellParser()
-
-## 2
-## TestSuite()/TestCase()/Steps()        
-
-## 3
-## Testsuite2LXml(testsuite)
-
+## 3 Testsuite2LXml(testsuite)
+### lxml
+### testsuiteTag = ET.Element('testsuite')
 
 
 def main():
+
+    from schema import TMOTV_Schema as S 
 
     ## 1st stage to create cell data from a xls spreadsheet
     xlsData = XlsData()

@@ -1,6 +1,7 @@
 .DS_Store
 *.pyc
 *.swp
+*.swo
 Testcases/
 9testcases.xml
 9testcases1.xml
