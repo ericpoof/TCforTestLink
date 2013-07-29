@@ -24,8 +24,8 @@ class TMOTV_Schema(object):
     Row_Suite_start = 2
     Row_Testcase = '^P\d$'
 
-    Row_Type_TC = 10
-    Row_Type_TS = 11
+    Row_Type_TC = 'TC' 
+    Row_Type_TS = 'TS' 
     
     Col_TestPlan = 0
     Col_TestSuite = 0
