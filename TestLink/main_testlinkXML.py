@@ -33,7 +33,7 @@ def main():
 
     ## 1st stage to create cell data from a xls spreadsheet
     xlsData = XlsData()
-    xlsData.readXls()
+    xlsData.readXls(S.File, S.Sheet)
     
      
     ## 2nd stage to parse xlsData and create testsuites

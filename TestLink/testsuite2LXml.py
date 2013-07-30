@@ -71,6 +71,7 @@ class Testsuite2LXml(object):
         """
         try:
             text = unicode(text, 'utf-8')
+            return text
         except TypeError:
             return text
         
@@ -98,8 +99,12 @@ class Testsuite2LXml(object):
             """ ...@var testcase.name: 
             """
             tcname = '  ' + tc.name
+            print ' tc.name type = ', type(tc.name)
+            print ' tcname type = ', type(tcname)
             utcname = self.getUnicode(tcname)
+            print ' utcname type = ', type(utcname)
             testcaseTag.set('name', utcname)
+#             testcaseTag.set('name', tcname)
             testcaseTag.set('internalid','')
     
             """ ...@var testcase.preconditions:

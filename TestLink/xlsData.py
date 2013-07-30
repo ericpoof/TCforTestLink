@@ -9,6 +9,7 @@ from schema import TMOTV_Schema as S
 from schema import ATTFamilyMap_Schema as AF
 
 class XlsData(object):
+    Debug = True
     def __init__(self):
         self.cellArr = []
 
@@ -99,10 +100,17 @@ class XlsData(object):
     
         return 'none'
         
-    def readXls(self):
+    def readXls(self, file, sheet):
+        """
+        create self.cellArr list of CellExl(s)
+        @param file: workdbook name
+        @type file: str
+        @param sheet: sheet name
+        @type sheet: str
+        """
         ## 0. read a spreadsheet with xlrd module
-        workbook = xlrd.open_workbook('TmbieTV_tcs_short.xlsx')
-        worksheet = workbook.sheet_by_name('Test Cases')
+        workbook = xlrd.open_workbook(file)
+        worksheet = workbook.sheet_by_name(sheet)
         num_rows = worksheet.nrows - 1
         num_cells = worksheet.ncols - 1
         
@@ -129,6 +137,31 @@ class XlsData(object):
         ## xlsData.printXlsData()
         print 'row length = ', self.getRowLength()
         print 'column length = ', self.getColLength()
+    
+    def readCsv(self, file):
+        """
+        create self.cellArr list of CellExl(s)
+        @param file: CSV name
+        @type file: str
+        """
+
+        import csv, sys
+
+        reader = csv.reader(open(file, "rb"))
+        try:
+            for idx_row, row in enumerate(reader):
+                if XlsData.Debug:
+                    print 'tittle = ',idx_row,  row[1]
+                    print  'precon = ', row[2]
+                    print  'steps = ', row[3]
+                    print  'expected = ', row[4]
+                for idx_col, col in enumerate(row):
+                    cell = CellExl(idx_row, idx_col, col)
+                    self.append(cell)
+#                     print 'cell = ', idx_row, idx_col, col
+        except csv.Error, e:
+            sys.exit('file %s, line %d: %s' % (file, reader.line_num, e))
+
         
 
 class CellExl(object):

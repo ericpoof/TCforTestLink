@@ -7,7 +7,8 @@ Created on Jul 1, 2013
 import xlrd
 import re
 from testsuite2LXml import Testsuite2LXml
-from xlsData_AFM import XlsData
+#from xlsData_AFM import XlsData
+from xlsData import XlsData
 from cellParser_AFM import CellParser
 from testSuite import TestSuite, TestCase, Step
 
