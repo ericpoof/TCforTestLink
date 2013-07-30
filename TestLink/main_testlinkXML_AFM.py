@@ -7,7 +7,6 @@ Created on Jul 1, 2013
 import xlrd
 import re
 from testsuite2LXml import Testsuite2LXml
-#from xlsData_AFM import XlsData
 from xlsData import XlsData
 from cellParser_AFM import CellParser
 from testSuite import TestSuite, TestCase, Step
@@ -27,14 +26,12 @@ from testSuite import TestSuite, TestCase, Step
 ### testsuiteTag = ET.Element('testsuite')
 
 
-
 def main():
 
     from schema import ATTFamilyMap_Schema as AF 
 
     ## 1st stage to create cell data from a xls spreadsheet
     xlsData = XlsData()
-#     xlsData.readXls()
     xlsData.readCsv(AF.File)
      
     ## 2nd stage to parse xlsData and create testsuites
@@ -42,8 +39,7 @@ def main():
     print '2nd stage'
     print '-------------------------------------'
     cellParser = CellParser(xlsData)
-    
-    
+
     """  @var no_rows: no of rows to parse
     """ 
     no_rows = xlsData.getRowLength() 
@@ -62,8 +58,7 @@ def main():
     ts2xml = Testsuite2LXml(testsuites[0])
     ts2xml.createTSElement()
     ts2xml.printPrettyForm()
-    filename = 'Attfamilymapsample2.xml'
-    ts2xml.saveTestsuiteTag(filename)
+    ts2xml.saveTestsuiteTag(AF.OutFile)
 
 
 if __name__ == '__main__':

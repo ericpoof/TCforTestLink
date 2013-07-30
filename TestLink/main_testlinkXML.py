@@ -6,7 +6,6 @@ Created on Jul 1, 2013
 
 import xlrd
 import re
-from tcPattern import TMO_TV
 from testsuite2LXml import Testsuite2LXml
 from xlsData import XlsData
 from cellParser import CellParser
@@ -29,20 +28,22 @@ from testSuite import TestSuite, TestCase, Step
 
 def main():
 
-    from schema import TMOTV_Schema as S 
+    from schema import TMOTV_Schema as TT 
 
     ## 1st stage to create cell data from a xls spreadsheet
     xlsData = XlsData()
-    xlsData.readXls(S.File, S.Sheet)
-    
+    xlsData.readXls(TT.File, TT.Sheet)
      
     ## 2nd stage to parse xlsData and create testsuites
-
+    print '-------------------------------------'
+    print '2nd stage'
+    print '-------------------------------------'
     cellParser = CellParser(xlsData)
 
     """  @var no_rows: no of rows to parse
     """ 
-    no_rows = xlsData.getColLength()
+    no_rows = xlsData.getRowLength() 
+    print 'number of rows is ', no_rows
     testsuites = cellParser.parseRows(no_rows)
     print '-------------------------------------'
     print 'printing testsuites'
@@ -52,16 +53,12 @@ def main():
     ## 3rd stage to create xml compatible with TestLink
     print '-------------------------------------'
     print ' ### 3rd stage '
-    print '------------------------------------'
+    print '-------------------------------------'
     
-    """  @ test lxml
-    """ 
     ts2xml = Testsuite2LXml(testsuites[0])
     ts2xml.createTSElement()
     ts2xml.printPrettyForm()
-    filename = '9testcases1.xml'
-    ts2xml.saveTestsuiteTag(filename)
-
+    ts2xml.saveTestsuiteTag(TT.OutFile)
 
 
 if __name__ == '__main__':

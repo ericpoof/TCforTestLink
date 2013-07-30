@@ -19,6 +19,8 @@ class TMOTV_Schema(object):
     FileName = 'TmbieTV_tcs_short.xlsx'
     File = Path + FileName
     Sheet = 'Test Cases'
+    OutFile = '9testcases1.xml'
+
     Row_Top = 0
     Row_Title = 1
     Row_Suite_start = 2
@@ -46,6 +48,7 @@ class ATTFamilyMap_Schema(object):
     Path = 'Testcases/'
     FileName = 'ATTFamilyMap.csv'
     File = Path + FileName
+    OutFile = 'Attfamilymapsample2.xml'
 
     Row_Top = 0
     Row_Suite_start = 1
