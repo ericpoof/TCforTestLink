@@ -60,3 +60,26 @@ class ATTFamilyMap_Schema(object):
     Col_TC_Precon = 2
     Col_TC_Steps = 3
     Col_TC_Expt = 4
+
+class ATTLookout_Schema(object):
+    """
+    Constants for ATT Lookout in custom markdown file 
+    # col 0: Title
+    # col 1: Test Step
+    # col 2: Test Data
+    # col 3: Expected Result
+    """
+    Path = 'Testcases/'
+    FileName = 'Lookout.txt'
+    File = Path + FileName
+    OutFile = 'AttLookout.xml'
+
+    Row_Suite_start = 1
+
+    Col_TestSuite = 'ATT Lookout Security'
+
+    Col_TC_Title = 0
+    Col_TC_TestStep = 1
+    Col_TC_TestData = 2
+    Col_TC_Expt = 3
+

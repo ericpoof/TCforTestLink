@@ -18,6 +18,15 @@ class TMO_TV(object):
 class ATT_FamilyMap(object):
     steps = '(\d\.)(.*)'
     sel_subgroup = 2
+
+
+class ATT_Lookout(object):
+    Title = '^QE'
+    Test_Step = '^\d'
+    Continue = '^\*'
+    NoData = '^\@'
+    Newline = '<\b>'
+
     
 
 

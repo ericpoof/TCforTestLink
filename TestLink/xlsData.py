@@ -102,6 +102,7 @@ class XlsData(object):
         
     def readXls(self, file, sheet):
         """
+        TMO TV
         create self.cellArr list of CellExl(s)
         @param file: workdbook name
         @type file: str
@@ -140,6 +141,7 @@ class XlsData(object):
     
     def readCsv(self, file):
         """
+        ATT Family Map
         create self.cellArr list of CellExl(s)
         @param file: CSV name
         @type file: str
@@ -162,6 +164,21 @@ class XlsData(object):
         except csv.Error, e:
             sys.exit('file %s, line %d: %s' % (file, reader.line_num, e))
 
+    def readTextMD(self, file):
+        """
+        ATT Lookout
+        create self.cellArr list of CellExl(s)
+        @param file: custom markdown textfile
+        @type file: str
+        """
+        with open(file) as f:
+            content = f.readlines()
+        for idx, line in enumerate(content):
+            print 'idx = ', idx, line
+            
+                    
+                
+                
         
 
 class CellExl(object):
