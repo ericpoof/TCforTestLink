@@ -165,6 +165,9 @@ class XlsData(object):
             sys.exit('file %s, line %d: %s' % (file, reader.line_num, e))
 
     def readTextMD(self, file):
+        import codecs
+        import re
+        from tcPattern import ATT_Lookout as AL
         """
         ATT Lookout
         create self.cellArr list of CellExl(s)
@@ -173,13 +176,28 @@ class XlsData(object):
         """
         with open(file) as f:
             content = f.readlines()
+
         for idx, line in enumerate(content):
+            re_title = re.compile(AL.Title, re.I)
+            re_steps = re.compile(AL.Test_Step, re.I)
+            re_cont = re.compile(AL.Continue, re.I)
+            re_none = re.compile(AL.NoData, re.I)
+            nline = AL.Newline
+
+            print '      '
+            print 'type = ', type(line)
             print 'idx = ', idx, line
-            
-                    
-                
-                
-        
+            if re_title.match(line):
+                print '=> title line'
+            elif re_steps.match(line):
+                print '=> steps line'
+            elif re_cont.match(line):
+                print '=> continued'
+            elif re_none.match(line): 
+                print '=> no data'
+            else:
+                print '=> none of it'
+
 
 class CellExl(object):
     def __init__(self, row_no, col_no, cell_value):
