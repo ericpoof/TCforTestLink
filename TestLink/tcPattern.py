@@ -26,6 +26,13 @@ class ATT_Lookout(object):
     Continue = '^\*'
     NoData = '^\@'
     Newline = '<\b>'
+    
+    TS = '^Test Step'
+    TD = '^Test Data'
+    EX = '^Expected'
+    CR = '^\n'
+    
+    
 
     
 

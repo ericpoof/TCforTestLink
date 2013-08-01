@@ -8,21 +8,38 @@ import re
 # from tcPattern import TMO_TV
 from tcPattern import ATT_FamilyMap
 # from schema import TMOTV_Schema as S 
-from schema import ATTFamilyMap_Schema as AF
+from schema import ATTLookout_Schema as AL
+from tcPattern import ATT_Lookout as reAL
 from testSuite import TestSuite, TestCase, Step
+from collections import deque
 
 
 class CellParser(object):
-    def __init__(self, xlsData):
-        self.xlsData = xlsData
-    
-    def parseRows(self, no_parsing_rows):
+    def __init__(self):
+        self.content = []
+
+    def readTextMD(self, file):
+        """
+        ATT Lookout
+        create self.cellArr list of CellExl(s)
+        @param file: custom markdown textfile
+        @type file: str
+        """
+        with open(file) as f:
+            self.content = f.readlines()
+
+
+    def parseRows(self):
+        '''
+        Main API exposed outside
+        :param no_parsing_rows:
+        '''
 
         # Top-level testsuite aggregator
         testsuites = []
         # dummy object assignment to rule out adding testsuite at first time
         ts = TestSuite()
-        ts.name = AF.Col_TestSuite
+        ts.name = AL.Col_TestSuite
         ### details
         ts.details = ''
 
@@ -30,14 +47,106 @@ class CellParser(object):
         ts.testcases = []
 
         ## Looping in rows
-        for i in range(AF.Row_Suite_start, no_parsing_rows):
-            row = self.xlsData.getRow(i)
-            tc = self.mapRow2TC(row)
-            ts.testcases.append(tc)
-        testsuites = [ts]
+        for row in self.content:
+            self.mapRow2TC(row)
+
+#         testsuites = [ts]
 
         ## The end result before passing to #3 XmlTree converter
-        return testsuites
+#         return testsuites                        
+                        
+                        
+    def mapRow2TC(self, row):
+
+        re_title = re.compile(reAL.Title, re.I)
+        re_steps = re.compile(reAL.Test_Step, re.I)
+        re_cont = re.compile(reAL.Continue, re.I)
+        re_ts = re.compile(reAL.TS, re.I)
+        re_td = re.compile(reAL.TD, re.I)
+        re_ex = re.compile(reAL.EX, re.I)
+        re_cr = re.compile(reAL.CR, re.I)
+        re_none = re.compile(reAL.NoData, re.I)
+        
+        steps_queue = deque('',maxlen=15)
+        data_queue = deque('',maxlen=15)
+        expt_queue = deque('',maxlen=15)
+        
+        nline = reAL.Newline
+        
+        flag_tc = False
+        flag_st = False
+        flag_dt = False
+        flag_ex = False
+
+        if re_title.match(row):            # QE
+            print '=> title row'
+            tc = TestCase()
+            tc.title = row
+            flag_ex = False
+            flag_tc = True
+            st_no = 0
+        elif re_ts.match(row):             # Test Step 
+            print '=> Test Step'
+            flag_tc = False
+            flag_st = True
+        elif re_steps.match(row):          # 1 xxx 
+            print '=> steps row'
+            steps_queue.append(row)
+        elif re_td.match(row):             # Test Data 
+            print '=> Test Data'
+            flag_st = False
+            flag_dt = True
+        elif re_cont.match(row):           # *xxx
+            print '=> continued'
+            if flag_st:
+                contd = steps_queue.pop() + row
+                steps_queue.append(contd)
+            if flag_dt:
+                contd = data_queue.pop() + row
+                data_queue.append(contd)
+            if flag_ex:
+                contd = expt_queue.pop() + row
+                expt_queue.append(contd)
+        elif re_none.match(row):           # @NoData 
+            print '=> no data'
+            if flag_dt:
+                data_queue.append('')
+            if flag_ex:
+                expt_queue.append('')
+        elif re_ex.match(row):             # Expected Result 
+            print '=> Expected Result'
+            flag_dt = False
+            flag_ex = True
+        elif re_cr.match(row):             # \n 
+            print '=> newline'
+        else:                              # item for data/expected
+            print '=> data/expected item'
+            if flag_tc:
+                tc.title = tc.title + row
+            if flag_dt:
+                data_queue.append(row)
+            if flag_ex:
+                expt_queue.append(row)
+
+            # The end of testcase
+            if flag_ex and (len(data_queue) == len(expt_queue)):
+                flag_ex = False
+
+                # sanity check
+                if len(steps_queue) != len(data_queue):
+                    print 'Mismatch in steps and data'
+
+                # Need to combine steps_queue and data_queue
+                for i in range(len(steps_queue)):
+                    st = Step()
+                    st.actions = steps_queue.popleft() + ':' + data_queue.popleft()
+                    print '--- actions = ', st.actions
+                    st.expectedresults = expt_queue.popleft()
+                    print '---Expt = ', st.expectedresults
+
+                
+
+
 
     def printTestSuites(self, testsuites):
         for ts in testsuites:
@@ -51,88 +160,3 @@ class CellParser(object):
                     print 'step=', step.step_number, ' :' , step.actions
                     if step.step_number == len(tc.steps):
                         print 'expected =', step.expectedresults
-
-
-    def mapRow2TC(self, row):
-            tc = TestCase()
-            tc_title =  row[AF.Col_TC_Title].cell_value
-            tc_desc =  row[AF.Col_TC_Steps].cell_value
-            tc_expt =  row[AF.Col_TC_Expt].cell_value
-            tc_vdrId = row[AF.Col_TC_ID].cell_value
-
-            patClass = ATT_FamilyMap()
-            parsedSteps = self.parseSteps(patClass, tc_desc)
-
-            ## b. Filling out TestCase()
-            ### name & Id
-            tc.name = '[' +tc_vdrId + '] ' +  tc_title
-#             tc.externalId = tc_extId
-
-            ### preconditions
-#             tc.preconditions = parsedSteps['precon']
-            tc.preconditions = row[AF.Col_TC_Precon].cell_value
-            print ' preconditions' , tc.preconditions
-
-            ### steps
-            steps = parsedSteps['steps']
-            print ' steps' , steps
-
-
-            ## c. Filling out Step()
-            for idx,st in enumerate(steps):
-                ### new Step object on each element of a list
-                step = Step()
-                ### step_number 
-                step.step_number = idx + 1
-                ### actions 
-                step.actions = st
-                ### expectedresults 
-                if (idx + 1) == len(steps):
-                    expt_newline = self.addLinetoNumList(patClass, tc_expt)
-                    print expt_newline
-                    step.expectedresults = expt_newline
-#                     step.expectedresults = tc_expt
-                ### append Step object to TestCase steps list
-                tc.steps.append(step)
-            
-            ## return TestCase() object
-            return tc
-                
-
-    def addLinetoNumList(self, patClass, str):
-            steps_pat = re.compile(patClass.steps, re.I)
-            m = steps_pat.match(str)
-
-            newLineAdded = ''
-            # regex finditer and Match object group(#)
-            if m:
-                for step in steps_pat.finditer(str):
-                    newLineAdded = newLineAdded + step.group(0) + '<br />' 
-                    print 'group(0) ', step.group(0)
-                    print 'newLineAdded = ', newLineAdded
-            else:
-                newLineAdded = str
-                print 'no numbered parts'
-            return newLineAdded
-        
-        
-    def parseSteps(self, patClass, str):
-            # regex compile
-            steps_pat = re.compile(patClass.steps, re.I)
-            
-            m = steps_pat.match(str)
-
-            steps = []
-            # regex finditer and Match object group(#)
-            if m:
-                for step in steps_pat.finditer(str):
-                    print 'step = ', step.group(patClass.sel_subgroup)
-                    step = step.group(patClass.sel_subgroup)
-                    steps.append(step)
-            else:
-                step = str
-                steps.append(step)
-
-
-            return {'steps':steps}
-

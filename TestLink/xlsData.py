@@ -165,7 +165,6 @@ class XlsData(object):
             sys.exit('file %s, line %d: %s' % (file, reader.line_num, e))
 
     def readTextMD(self, file):
-        import codecs
         import re
         from tcPattern import ATT_Lookout as AL
         """
@@ -181,22 +180,35 @@ class XlsData(object):
             re_title = re.compile(AL.Title, re.I)
             re_steps = re.compile(AL.Test_Step, re.I)
             re_cont = re.compile(AL.Continue, re.I)
+            re_ts = re.compile(AL.TS, re.I)
+            re_td = re.compile(AL.TD, re.I)
+            re_ex = re.compile(AL.EX, re.I)
+            re_cr = re.compile(AL.CR, re.I)
             re_none = re.compile(AL.NoData, re.I)
+            
             nline = AL.Newline
 
             print '      '
             print 'type = ', type(line)
             print 'idx = ', idx, line
-            if re_title.match(line):
+            if re_title.match(line):            # QE
                 print '=> title line'
-            elif re_steps.match(line):
+            elif re_steps.match(line):          # 1 xxx 
                 print '=> steps line'
-            elif re_cont.match(line):
+            elif re_cont.match(line):           # *xxx
                 print '=> continued'
-            elif re_none.match(line): 
+            elif re_none.match(line):           # @NoData 
                 print '=> no data'
-            else:
-                print '=> none of it'
+            elif re_ts.match(line):             # Test Step 
+                print '=> Test Step'
+            elif re_td.match(line):             # Test Data 
+                print '=> Test Data'
+            elif re_ex.match(line):             # Expected Result 
+                print '=> Expected Result'
+            elif re_cr.match(line):             # \n 
+                print '=> newline'
+            else:                               # item for data/expected
+                print '=> data/expected item'
 
 
 class CellExl(object):

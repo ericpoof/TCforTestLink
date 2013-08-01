@@ -8,7 +8,7 @@ import xlrd
 import re
 from testsuite2LXml import Testsuite2LXml
 from xlsData import XlsData
-from cellParser import CellParser
+from cellParser_ALO import CellParser
 from testSuite import TestSuite, TestCase, Step
 
 
@@ -31,19 +31,23 @@ def main():
     from schema import ATTLookout_Schema as AL
 
     ## 1st stage to create cell data from a xls spreadsheet
-    xlsData = XlsData()
-    xlsData.readTextMD(AL.File)
+    ## Skipped 1st stage for custom markdown testcases
+
+#     xlsData = XlsData()
+#     xlsData.readTextMD(AL.File)
      
 #     ## 2nd stage to parse xlsData and create testsuites
 #     print '-------------------------------------'
 #     print '2nd stage'
 #     print '-------------------------------------'
-#     cellParser = CellParser(xlsData)
+    cellParser = CellParser()
 # 
 #     """  @var no_rows: no of rows to parse
 #     """ 
 #     no_rows = xlsData.getRowLength() 
 #     print 'number of rows is ', no_rows
+    cellParser.readTextMD(AL.File)
+    cellParser.parseRows()
 #     testsuites = cellParser.parseRows(no_rows)
 #     print '-------------------------------------'
 #     print 'printing testsuites'
