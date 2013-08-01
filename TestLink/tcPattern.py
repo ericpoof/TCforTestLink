@@ -31,6 +31,7 @@ class ATT_Lookout(object):
     TD = '^Test Data'
     EX = '^Expected'
     CR = '^\n'
+    EOF = 'EOF'
     
     
 

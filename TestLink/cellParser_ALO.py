@@ -56,6 +56,7 @@ class CellParser(object):
         re_td = re.compile(reAL.TD, re.I)
         re_ex = re.compile(reAL.EX, re.I)
         re_cr = re.compile(reAL.CR, re.I)
+        re_eof = re.compile(reAL.EOF, re.I)
         re_none = re.compile(reAL.NoData, re.I)
         nline = reAL.Newline
 
@@ -68,7 +69,9 @@ class CellParser(object):
         flag_st = False
         flag_dt = False
         flag_ex = False
-
+        
+        tc_no = 0
+        
         for i in range(8, len(self.content)):
             row = self.content[i]
 #             self.mapRow2TC(row, steps_queue, data_queue, expt_queue)
@@ -80,7 +83,35 @@ class CellParser(object):
                 tc.title = row
                 flag_ex = False
                 flag_tc = True
+                tc_no = tc_no + 1
                 st_no = 0
+                
+                if len(steps_queue) !=0 and (len(data_queue) == len(expt_queue)):
+                    print '============= testcase ended====================='
+                    flag_ex = False
+                    # sanity check
+                    if len(steps_queue) != len(data_queue):
+                        print 'Mismatch in steps and data'
+                        print 'len steps_queue', len(steps_queue)
+                        print 'len data_queue', len(data_queue)
+                    # Need to combine steps_queue and data_queue
+                    for i in range(len(steps_queue)):
+                        st = Step()
+                        st.actions = steps_queue.popleft() + ':' + data_queue.popleft()
+                        print '--- actions = ', st.actions
+                        st.expectedresults = expt_queue.popleft()
+                        print '---Expt = ', st.expectedresults
+                    
+                    self.noTC = self.noTC + 1
+                    self.noData = self.noData + 1
+                    self.noCont = self.noCont + 1
+                    print 'noTC from noData', self.noData
+                    print 'noTC from noCont', self.noCont
+                    print 'Total testcases = ', self.noTC
+                    steps_queue = deque('', maxlen=15)
+                    data_queue = deque('', maxlen=15)
+                    expt_queue = deque('', maxlen=15)
+
             elif re_ts.match(row):             # Test Step 
                 print '=> Test Step'
                 flag_tc = False
@@ -109,50 +140,15 @@ class CellParser(object):
                     data_queue.append('')
                 if flag_ex:
                     expt_queue.append('')
-#                 self.createStep(flag_ex, steps_queue, data_queue, expt_queue)
             elif re_ex.match(row):             # Expected Result 
                 print '=> Expected Result'
                 flag_dt = False
                 flag_ex = True
             elif re_cr.match(row):             # \n 
                 print '=> newline'
-#                 self.createStep(flag_ex, steps_queue, data_queue, expt_queue)
-                # The end of testcase
-#                 if flag_ex and (len(data_queue) == len(expt_queue)):
-#                     print '============= testcase ended====================='
-#                     flag_ex = False
-#                     # sanity check
-#                     if len(steps_queue) != len(data_queue):
-#                         print 'Mismatch in steps and data'
-#                         print 'len steps_queue', len(steps_queue)
-#                         print 'len data_queue', len(data_queue)
-#                     # Need to combine steps_queue and data_queue
-#                     for i in range(len(steps_queue)):
-#                         st = Step()
-#                         st.actions = steps_queue.popleft() + ':' + data_queue.popleft()
-#                         print '--- actions = ', st.actions
-#                         st.expectedresults = expt_queue.popleft()
-#                         print '---Expt = ', st.expectedresults
-#                     
-#                     self.noTC = self.noTC + 1
-#                     self.noData = self.noData + 1
-#                     self.noCont = self.noCont + 1
-#                     print 'noTC from noData', self.noData
-#                     print 'noTC from noCont', self.noCont
-#                     print 'Total testcases = ', self.noTC
-#                     steps_queue = deque('', maxlen=15)
-#                     data_queue = deque('', maxlen=15)
-#                     expt_queue = deque('', maxlen=15)
-            else:                              # item for data/expected
-                print '=> data/expected item'
-                if flag_tc:
-                    tc.title = tc.title + row
-                if flag_dt:
-                    data_queue.append(row)
-                if flag_ex:
-                    expt_queue.append(row)
-#                 self.createStep(flag_ex, steps_queue, data_queue, expt_queue)
-                if flag_ex and (len(data_queue) == len(expt_queue)):
+            elif re_eof.match(row):            # EOF
+                print 'Total no of testcases = ', tc_no
+                if len(steps_queue) !=0 and (len(data_queue) == len(expt_queue)):
                     print '============= testcase ended====================='
                     flag_ex = False
                     # sanity check
@@ -177,6 +173,14 @@ class CellParser(object):
                     steps_queue = deque('', maxlen=15)
                     data_queue = deque('', maxlen=15)
                     expt_queue = deque('', maxlen=15)
+            else:                              # item for data/expected
+                print '=> data/expected item'
+                if flag_tc:
+                    tc.title = tc.title + row
+                if flag_dt:
+                    data_queue.append(row)
+                if flag_ex:
+                    expt_queue.append(row)
              
 
 #         testsuites = [ts]
