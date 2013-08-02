@@ -21,11 +21,14 @@ class ATT_FamilyMap(object):
 
 
 class ATT_Lookout(object):
-    Title = '^QE'
-    Test_Step = '^\d'
-    Continue = '^\*'
+#     Title = '^QE'
+#     Test_Step = '^\d'
+#     Continue = '^\*'
+    Title = '(^QE)(.*)'
+    Test_Step = '(^\d)(.*)'
+    Continue = '(^\*)(.*)'
     NoData = '^\@'
-    Newline = '<\b>'
+    Newline = '</b>'
     
     TS = '^Test Step'
     TD = '^Test Data'

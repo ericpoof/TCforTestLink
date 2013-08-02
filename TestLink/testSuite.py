@@ -18,7 +18,7 @@ class TestCase(object):
         ## external id
         self.externalId = ''
         ## S.Col_TC_Desc
-        self.preconditions = []
+        self.preconditions = ''
         self.steps = []
 
 

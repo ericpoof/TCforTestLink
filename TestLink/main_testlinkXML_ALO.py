@@ -47,22 +47,24 @@ def main():
 #     no_rows = xlsData.getRowLength() 
 #     print 'number of rows is ', no_rows
     cellParser.readTextMD(AL.File)
-    cellParser.parseRows()
+    ts = cellParser.parseRows()
 #     testsuites = cellParser.parseRows(no_rows)
 #     print '-------------------------------------'
 #     print 'printing testsuites'
 #     print '-------------------------------------'
-#     cellParser.printTestSuites(testsuites)
+    testsuites = [ts] 
+    cellParser.printTestSuites(testsuites)
+    print 'done'
 # 
 #     ## 3rd stage to create xml compatible with TestLink
 #     print '-------------------------------------'
 #     print ' ### 3rd stage '
 #     print '-------------------------------------'
 #     
-#     ts2xml = Testsuite2LXml(testsuites[0])
-#     ts2xml.createTSElement()
-#     ts2xml.printPrettyForm()
-#     ts2xml.saveTestsuiteTag(TT.OutFile)
+    ts2xml = Testsuite2LXml(testsuites[0])
+    ts2xml.createTSElement()
+    ts2xml.printPrettyForm()
+    ts2xml.saveTestsuiteTag(AL.OutFile)
 
 
 if __name__ == '__main__':
