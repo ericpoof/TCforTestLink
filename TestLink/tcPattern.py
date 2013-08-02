@@ -25,10 +25,10 @@ class ATT_Lookout(object):
 #     Test_Step = '^\d'
 #     Continue = '^\*'
     Title = '(^QE)(.*)'
-    Test_Step = '(^\d)(.*)'
+    Test_Step = '(^[\d]+)(.*)'
     Continue = '(^\*)(.*)'
     NoData = '^\@'
-    Newline = '</b>'
+    Newline = '</br></br>'
     
     TS = '^Test Step'
     TD = '^Test Data'

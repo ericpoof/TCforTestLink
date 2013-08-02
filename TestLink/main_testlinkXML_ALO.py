@@ -6,7 +6,7 @@ Created on Jul 1, 2013
 
 import xlrd
 import re
-from testsuite2LXml import Testsuite2LXml
+from testsuite2LXml_ALO import Testsuite2LXml
 from xlsData import XlsData
 from cellParser_ALO import CellParser
 from testSuite import TestSuite, TestCase, Step

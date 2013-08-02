@@ -141,11 +141,11 @@ class Testsuite2LXml(object):
                 actionsTag.text = ET.CDATA(self.getUnicode(st.actions))
                 """ ......@var step.expectedresults: 
                 """
-                if stepsLen == (idx+1):
-                    expectedresultsTag = ET.SubElement(stepTag, 'expectedresults')
-                    expectedresultsTag.text = ET.CDATA(self.getUnicode(st.expectedresults))
-                    # kinky part on Mac not able to encode with mac-roman
+                expectedresultsTag = ET.SubElement(stepTag, 'expectedresults')
+                expectedresultsTag.text = ET.CDATA(self.getUnicode(st.expectedresults))
+                # kinky part on Mac not able to encode with mac-roman
 #                     print '-----------Expected ', expectedresultsTag.text
+
                 execution_typeTag = ET.SubElement(stepTag, 'execution_type')
                 execution_typeTag.text = ET.CDATA(str(1))
                 

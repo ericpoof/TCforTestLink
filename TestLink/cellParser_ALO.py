@@ -49,7 +49,7 @@ class CellParser(object):
                 if data_tmp == '':
                     st.actions = self.steps_queue.popleft() 
                 else:
-                    st.actions = self.steps_queue.popleft() + '</br>' + ' precondition: ' + data_tmp
+                    st.actions = self.steps_queue.popleft() + reAL.Newline + ' [precondition]: ' + data_tmp
                 print '--- actions = ', st.actions
                 st.expectedresults = self.expt_queue.popleft()
                 tc.steps.append(st)
@@ -160,6 +160,8 @@ class CellParser(object):
                 print '=> newline'
             elif re_eof.match(row):            # EOF
                 print 'Total no of testcases = ', tc_no
+                tc = TestCase()
+                tc.name = prev
                 tc = self.createTestCase(tc)
                 ts.testcases.append(tc)
             else:                              # item for data/expected
