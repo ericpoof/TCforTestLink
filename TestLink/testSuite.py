@@ -9,6 +9,7 @@ class TestSuite(object):
     def __init__(self):
         self.name = ''
         self.details = ''
+        self.testsuites = []
         self.testcases = []
         
 class TestCase(object): 
