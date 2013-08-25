@@ -4,23 +4,19 @@ Created on Jul 1, 2013
 @author: me.jung
 '''
 
-import xlrd
 import re
-from testsuite2LXml_ALO import Testsuite2LXml
-from xlsData import XlsData
-from cellParser_ALO import CellParser
 from testSuite import TestSuite, TestCase, Step
 from lxml import etree
-from _pyio import BytesIO
-from schema import ATTLookout_Schema as AL
 import xlwt
-import datetime
+#from _pyio import BytesIO
+#import datetime
 
 # Conversion Flow
 
+# first draft - experimenting at one level
 def parseOneLevel():
-    file = 'Testcases/Attfamilymapsample2.xml'
-    with open(file, 'r') as f:
+    xmlFile = 'Testcases/Attfamilymapsample2.xml'
+    with open(xmlFile, 'r') as f:
         print f
         tree = etree.parse(f)
 #     TString = etree.tostring(tree)
@@ -55,12 +51,12 @@ def parseOneLevel():
                     for st_el in st:
                         print ' %s : %s' % (st_el.tag, st_el.text)
 
-def Element_recursive(root, ts_root):
+def Element_recur(root, ts_root):
     for elm in root:
         if elm.tag == 'testsuite':
             new_ts = TestSuite()
             new_ts.name = elm.get('name')
-            new_ts = Element_recursive(elm, new_ts )
+            new_ts = Element_recur(elm, new_ts )
             ts_root.testsuites.append(new_ts)
         elif elm.tag == 'testcase':
             new_tc = TestCase()
@@ -80,9 +76,7 @@ def Element_recursive(root, ts_root):
             ts_root.testcases.append(new_tc)
     return ts_root
     
-                        
 
-# def write_xls(file_name, sheet_name, headings, data, heading_xf, data_xfs, col_width):
 def write_xls(file_name, sheet_name, headings, data, data_xfs, col_width):
     ezxf = xlwt.easyxf
     heading_xf = ezxf('font: bold on; align: wrap on, vert centre, horiz center;  \
@@ -108,43 +102,81 @@ def write_xls(file_name, sheet_name, headings, data, data_xfs, col_width):
                  pattern: pattern solid, fore-colour ' 
     ts_color = ['light_blue;', 'light_green', 'light_orange', 'light_turquoise' ]            
 
-    prev_value = ''
+    prev_row  = []
+    steps = 0
     for row in data:
-        rowx += 1
+        rowx = rowx + 1
         if ts_re.match(row[0]):
             ts_style = ts_style_pre + ts_color[row[6] % 4]
             heading_xf = ezxf(ts_style)
             sheet.write(rowx, 0, row[0], heading_xf)
             sheet.write_merge(rowx, rowx, 1, 5, row[1], heading_xf)
         else:
-            if row[1] == prev_value:
-                merge_flag = True
+            if row[1] == 'same':
+                steps = steps + 1
+                for colx, value in enumerate(row):
+                        if colx > 2:
+                            sheet.write(rowx, colx, value, data_xfs[colx])
+            elif row[1] == 'last':
+                steps = steps + 1
+                m_style = ezxf('align: vert center, horiz left, wrap on')
+                sheet.write_merge(rowx-steps,rowx, 0,0, prev_row[0], m_style)
+                sheet.write_merge(rowx-steps,rowx, 1,1, prev_row[1], m_style)
+                sheet.write_merge(rowx-steps,rowx, 2,2, prev_row[2], m_style)
+                for colx, value in enumerate(row):
+                        if colx > 2:
+                            sheet.write(rowx, colx, value, data_xfs[colx])
             else:
-#                 print 'row[1]: ' , row[1]
-#                 print 'prev_value: ', prev_value
-                merge_flag = False
-            prev_value = row[1]
-
-            for colx, value in enumerate(row):
-                    sheet.write(rowx, colx, value, data_xfs[colx])
-
-#             if merge_flag:
-#                 m_style = ezxf('align: vert center, horiz left, wrap on')
-#                 sheet.write(rowx-1, 0, '' )
-#                 sheet.write(rowx-1, 1, '' )
-#                 sheet.write(rowx-1, 2, '' )
-#                 sheet.write_merge(rowx-1,rowx, 0,0, row[0], m_style)
-#                 sheet.write_merge(rowx-1,rowx, 1,1, row[1], m_style)
-#                 sheet.write_merge(rowx-1,rowx, 2,2, row[2], m_style)
-#             else:
-#                 for colx, value in enumerate(row):
-#                         sheet.write(rowx, colx, value, data_xfs[colx])
+                prev_row = row
+                steps = 0
+                for colx, value in enumerate(row):
+                        sheet.write(rowx, colx, value, data_xfs[colx])
                 
     book.save(file_name)
 
+def remove_redundantCell(data):
+    prev_row = 6*['']
+    for idx, row in enumerate(data):
+        if row[1] == prev_row[1]:
+            row[0] = 'same'
+            row[1] = 'same'
+            row[2] = 'same'
+        else:
+            if data[idx-1][1] == 'same':
+                data[idx-1][1] = 'last'
+            prev_row = row
+    return data
+
+def TS2RowData_recur(ts_top, level, data):
+    if len(ts_top.testsuites) > 0:
+        level = level + 1
+        for ts_elm in ts_top.testsuites:
+            ts_title = ts_elm.name
+            row = [ 'ts', ts_title, '', '', '', '' , level]
+            data.append(row)
+            if len(ts_elm.testcases) > 0:
+                for tc in ts_elm.testcases:
+                    tc_title = tc.name
+                    tc_precon = tc.preconditions
+                    for st in tc.steps:
+                        st_desc = st.actions
+                        st_expt = st.expectedresults
+                        row = [ 'tc_no', tc_title, tc_precon, st_desc, st_expt, '' ]
+                        data.append(row)
+            if len(ts_elm.testsuites) > 0:
+                TS2RowData_recur(ts_elm, level, data)
+    if len(ts_top.testcases) > 0:
+                for tc in ts_top.testcases:
+                    tc_title = tc.name
+                    tc_precon = tc.preconditions
+                    for st in tc.steps:
+                        st_desc = st.actions
+                        st_expt = st.expectedresults
+                        row = [ 'tc_no', tc_title, tc_precon, st_desc, st_expt, '' ]
+                        data.append(row)
+    return data
 
 def create_xls( testsuite ):
-    import sys
     # Testcase
     hdngs = ['ID', 'Title', 'Preconditions', 'Steps', 'Expected', 'Comment']
     kinds =  'textId   textTitle   textCont  textCont  textCont   textComt'.split()
@@ -156,41 +188,15 @@ def create_xls( testsuite ):
     ts = testsuite
     data = []
     level = 0
-    def TS_recursive(ts_top, level):
-        if len(ts_top.testsuites) > 0:
-            level = level + 1
-            for ts_elm in ts_top.testsuites:
-                ts_title = ts_elm.name
-                row = [ 'ts', ts_title, '', '', '', '' , level]
-                data.append(row)
-                if len(ts_elm.testcases) > 0:
-                    for tc in ts_elm.testcases:
-                        tc_title = tc.name
-                        tc_precon = tc.preconditions
-                        for st in tc.steps:
-                            st_desc = st.actions
-                            st_expt = st.expectedresults
-                            row = [ 'tc_no', tc_title, tc_precon, st_desc, st_expt, '' ]
-                            data.append(row)
-                if len(ts_elm.testsuites) > 0:
-                    TS_recursive(ts_elm, level)
-        if len(ts_top.testcases) > 0:
-                    for tc in ts_top.testcases:
-                        tc_title = tc.name
-                        tc_precon = tc.preconditions
-                        for st in tc.steps:
-                            st_desc = st.actions
-                            st_expt = st.expectedresults
-                            row = [ 'tc_no', tc_title, tc_precon, st_desc, st_expt, '' ]
-                            data.append(row)
-                    
-    TS_recursive(ts, level)
 
+    # step 3-1a: turn TestSuite() to row data
+    data = TS2RowData_recur(ts, level, data)
+
+    # step 3-1b: remove redundant cell considering limitation of xlwt in overwriting cells 
+    data = remove_redundantCell(data)
+    
+    # step 3-1c: prepare cell style with easyxf
     ezxf = xlwt.easyxf
-#     heading_xf = ezxf('font: bold on; align: wrap on, vert centre, horiz center;  \
-#                      pattern: pattern solid, fore-colour yellow; \
-#                      borders: left thin, right thin, top thin, bottom thin;' \
-#                      )
     kind_to_xf_map = {
         'date': ezxf(num_format_str='yyyy-mm-dd'),
         'int': ezxf(num_format_str='#,##0'),
@@ -203,26 +209,36 @@ def create_xls( testsuite ):
         'textComt': ezxf('align: vert top, horiz left, wrap on'),
         }
     data_xfs = [kind_to_xf_map[k] for k in kinds]
-#     write_xls('Home_testsuite_conv.xls', 'Demo', hdngs, data, heading_xf, data_xfs, colWidth)
+    
+    
+    
+    # step 3-2: write in sheet
+
     write_xls('Home_testsuite_conv.xls', 'Demo', hdngs, data, data_xfs, colWidth)
     
     
 def main():
 
-#     parseOneLevel()
-    file = 'Testcases/Home.testsuite-deep2.xml'
-    with open(file, 'r') as f:
+    # test 0: parseOneLevel()
+
+    # step 1: parsing xml file into etree
+    xmlFile = 'Testcases/Home.testsuite-deep2.xml'
+    with open(xmlFile, 'r') as f:
         tree = etree.parse(f)
-#     print etree.tostring(tree)
+        #print etree.tostring(tree)
+
+    # step 2: turn the etree into TestSuite() 
     root = tree.getroot()
     print 'root = ', root.tag, root.get('name'), type(root)
-    
     ts_root = TestSuite()
     ts_root.name = root.get('name')
-    
-    ts_root = Element_recursive(root, ts_root)
+    ts_root = Element_recur(root, ts_root)
     print 'recursive done'
     
+    # step 3: create xls file
+    # step 3-1a: turn TestSuite() to row data
+    # step 3-1b: remove redundant cell considering limitation of xlwt in overwriting cells 
+    # step 3-1c: prepare cell style with easyxf
     create_xls(ts_root)
      
     print 'done'
