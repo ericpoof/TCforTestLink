@@ -11,6 +11,9 @@ from schema import ATTFamilyMap_Schema as AF
 class XlsData(object):
     Debug = True
     def __init__(self):
+        """
+        array of CellExl()
+        """
         self.cellArr = []
 
     def append(self, cell):

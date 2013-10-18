@@ -1,0 +1,8 @@
+My Account : Account
+Lookout : Lookout|security
+T-mobile TV : T-mobile TV|TV|Tmobile TV
+Visual Voicemail : VVM|Voicemail
+Mobile Life Widget : hightlight|MyLife|Life Widget
+Name ID : nameid|name id|cnam
+CIQ : ciq
+ISIS : isis
