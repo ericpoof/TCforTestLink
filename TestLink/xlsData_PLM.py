@@ -6,7 +6,7 @@ Created on Jul 17, 2013
 import xlrd
 
 class XlsData(object):
-    Debug = True
+    Debug = False
     def __init__(self):
         """
         array of CellExl()
@@ -58,7 +58,7 @@ class XlsData(object):
         while curr_row < num_rows:
             curr_row += 1
             row = worksheet.row(curr_row)
-            print 'Row:', curr_row
+            #print 'Row:', curr_row
             curr_cell = -1
             while curr_cell < num_cells:
                 curr_cell += 1
@@ -71,11 +71,11 @@ class XlsData(object):
                 ## 
                 ##print '    ', cell_type, ':', (curr_row, curr_cell), cell_value
                 ##print get_tcTag(curr_cell, cell_value)
-        print '------CLASS----------------------------------'
-        print ' #1 step'
+        #print '------CLASS----------------------------------'
+        #print ' #1 step'
         ## xlsData.printXlsData()
-        print 'row length = ', self.getRowLength()
-        print 'column length = ', self.getColLength()
+        #print 'row length = ', self.getRowLength()
+        #print 'column length = ', self.getColLength()
     
     def readCsv(self, file):
         """
