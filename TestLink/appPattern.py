@@ -125,7 +125,8 @@ def write_xls(file_name, sheet_name, headings, data, data_xfs, col_width):
                      pattern: pattern solid, fore-colour yellow; \
                      borders: left thin, right thin, top thin, bottom thin;' \
                      )
-    book = xlwt.Workbook()
+    ## Workbook encoding should be utf-8, 10/27
+    book = xlwt.Workbook(encoding='utf-8')
     sheet = book.add_sheet(sheet_name, cell_overwrite_ok=True)
 #     sheet = book.add_sheet(sheet_name)
     rowx = 0
@@ -151,9 +152,9 @@ def write_xls(file_name, sheet_name, headings, data, data_xfs, col_width):
         for colx, cell in enumerate(row):
 #             pass
 #             print colx
-            if rowx < 6:
-#             if rowx < len(data) -1:
-                print type(cell.cell_value), cell.cell_value
+#             if rowx < 7:
+            if rowx < len(data) + 1:
+                print "REPR", repr(cell.cell_value), cell.cell_value
                 sheet.write(rowx, colx, cell.cell_value, data_xfs[colx])
     book.save(file_name)
 
